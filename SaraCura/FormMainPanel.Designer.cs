@@ -65,9 +65,20 @@
 			this.panelCadastroParticular = new System.Windows.Forms.Panel();
 			this.labelParticularPagamento = new System.Windows.Forms.Label();
 			this.comboBoxPagamentos = new System.Windows.Forms.ComboBox();
-			this.panel1 = new System.Windows.Forms.Panel();
+			this.panelCadastroParticularCartao = new System.Windows.Forms.Panel();
 			this.labelCadastroParticularCartaoNome = new System.Windows.Forms.Label();
 			this.textBoxCadastroParticularCartaoNome = new System.Windows.Forms.TextBox();
+			this.labelCadastroParticularCartaoNumero = new System.Windows.Forms.Label();
+			this.maskedTextBoxCadastroParticularCartaoNumero = new System.Windows.Forms.MaskedTextBox();
+			this.labelCadastroParticularCartaoCodigo = new System.Windows.Forms.Label();
+			this.maskedTextBoxCadastroParticularCartaoCodigo = new System.Windows.Forms.MaskedTextBox();
+			this.labelCadastroParticularCartaoCPF = new System.Windows.Forms.Label();
+			this.maskedTextBoxCadastroParticularCartaoCPF = new System.Windows.Forms.MaskedTextBox();
+			this.labelCadastroParticularCartaofinalizar = new System.Windows.Forms.Label();
+			this.panelSelecaoCadastro = new System.Windows.Forms.Panel();
+			this.label2 = new System.Windows.Forms.Label();
+			this.labelCadastroMedico = new System.Windows.Forms.Label();
+			this.labelCadastroPaciente = new System.Windows.Forms.Label();
 			this.panelBarraSuperior.SuspendLayout();
 			this.panelLateral.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBoxImagem)).BeginInit();
@@ -75,7 +86,8 @@
 			this.panelConsultas.SuspendLayout();
 			this.panelCadastroConvenio.SuspendLayout();
 			this.panelCadastroParticular.SuspendLayout();
-			this.panel1.SuspendLayout();
+			this.panelCadastroParticularCartao.SuspendLayout();
+			this.panelSelecaoCadastro.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// labelSair_X
@@ -287,7 +299,7 @@
 			this.checkBoxPagamentoParticular.AutoSize = true;
 			this.checkBoxPagamentoParticular.Font = new System.Drawing.Font("Yu Gothic Medium", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.checkBoxPagamentoParticular.ForeColor = System.Drawing.Color.Teal;
-			this.checkBoxPagamentoParticular.Location = new System.Drawing.Point(313, 241);
+			this.checkBoxPagamentoParticular.Location = new System.Drawing.Point(311, 215);
 			this.checkBoxPagamentoParticular.Name = "checkBoxPagamentoParticular";
 			this.checkBoxPagamentoParticular.Size = new System.Drawing.Size(128, 29);
 			this.checkBoxPagamentoParticular.TabIndex = 7;
@@ -300,7 +312,7 @@
 			this.checkBoxPagamentoConvenio.AutoSize = true;
 			this.checkBoxPagamentoConvenio.Font = new System.Drawing.Font("Yu Gothic Medium", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.checkBoxPagamentoConvenio.ForeColor = System.Drawing.Color.Teal;
-			this.checkBoxPagamentoConvenio.Location = new System.Drawing.Point(20, 241);
+			this.checkBoxPagamentoConvenio.Location = new System.Drawing.Point(19, 215);
 			this.checkBoxPagamentoConvenio.Name = "checkBoxPagamentoConvenio";
 			this.checkBoxPagamentoConvenio.Size = new System.Drawing.Size(121, 29);
 			this.checkBoxPagamentoConvenio.TabIndex = 6;
@@ -313,7 +325,7 @@
 			this.labelCadastroPagamento.AutoSize = true;
 			this.labelCadastroPagamento.Font = new System.Drawing.Font("Yu Gothic Medium", 16.25F, System.Drawing.FontStyle.Bold);
 			this.labelCadastroPagamento.ForeColor = System.Drawing.Color.Teal;
-			this.labelCadastroPagamento.Location = new System.Drawing.Point(16, 205);
+			this.labelCadastroPagamento.Location = new System.Drawing.Point(15, 182);
 			this.labelCadastroPagamento.Name = "labelCadastroPagamento";
 			this.labelCadastroPagamento.Size = new System.Drawing.Size(249, 29);
 			this.labelCadastroPagamento.TabIndex = 5;
@@ -452,12 +464,12 @@
 			// 
 			// panelCadastroParticular
 			// 
-			this.panelCadastroParticular.Controls.Add(this.panel1);
+			this.panelCadastroParticular.Controls.Add(this.panelCadastroParticularCartao);
 			this.panelCadastroParticular.Controls.Add(this.comboBoxPagamentos);
 			this.panelCadastroParticular.Controls.Add(this.labelParticularPagamento);
-			this.panelCadastroParticular.Location = new System.Drawing.Point(3, 276);
+			this.panelCadastroParticular.Location = new System.Drawing.Point(3, 240);
 			this.panelCadastroParticular.Name = "panelCadastroParticular";
-			this.panelCadastroParticular.Size = new System.Drawing.Size(590, 279);
+			this.panelCadastroParticular.Size = new System.Drawing.Size(590, 312);
 			this.panelCadastroParticular.TabIndex = 12;
 			this.panelCadastroParticular.Visible = false;
 			// 
@@ -487,14 +499,21 @@
 			this.comboBoxPagamentos.TabIndex = 1;
 			this.comboBoxPagamentos.SelectedIndexChanged += new System.EventHandler(this.comboBoxPagamentos_SelectedIndexChanged);
 			// 
-			// panel1
+			// panelCadastroParticularCartao
 			// 
-			this.panel1.Controls.Add(this.textBoxCadastroParticularCartaoNome);
-			this.panel1.Controls.Add(this.labelCadastroParticularCartaoNome);
-			this.panel1.Location = new System.Drawing.Point(23, 89);
-			this.panel1.Name = "panel1";
-			this.panel1.Size = new System.Drawing.Size(557, 187);
-			this.panel1.TabIndex = 2;
+			this.panelCadastroParticularCartao.Controls.Add(this.labelCadastroParticularCartaofinalizar);
+			this.panelCadastroParticularCartao.Controls.Add(this.maskedTextBoxCadastroParticularCartaoCPF);
+			this.panelCadastroParticularCartao.Controls.Add(this.labelCadastroParticularCartaoCPF);
+			this.panelCadastroParticularCartao.Controls.Add(this.maskedTextBoxCadastroParticularCartaoCodigo);
+			this.panelCadastroParticularCartao.Controls.Add(this.labelCadastroParticularCartaoCodigo);
+			this.panelCadastroParticularCartao.Controls.Add(this.maskedTextBoxCadastroParticularCartaoNumero);
+			this.panelCadastroParticularCartao.Controls.Add(this.labelCadastroParticularCartaoNumero);
+			this.panelCadastroParticularCartao.Controls.Add(this.textBoxCadastroParticularCartaoNome);
+			this.panelCadastroParticularCartao.Controls.Add(this.labelCadastroParticularCartaoNome);
+			this.panelCadastroParticularCartao.Location = new System.Drawing.Point(3, 89);
+			this.panelCadastroParticularCartao.Name = "panelCadastroParticularCartao";
+			this.panelCadastroParticularCartao.Size = new System.Drawing.Size(584, 220);
+			this.panelCadastroParticularCartao.TabIndex = 2;
 			// 
 			// labelCadastroParticularCartaoNome
 			// 
@@ -514,11 +533,129 @@
 			this.textBoxCadastroParticularCartaoNome.Size = new System.Drawing.Size(423, 20);
 			this.textBoxCadastroParticularCartaoNome.TabIndex = 1;
 			// 
+			// labelCadastroParticularCartaoNumero
+			// 
+			this.labelCadastroParticularCartaoNumero.AutoSize = true;
+			this.labelCadastroParticularCartaoNumero.Font = new System.Drawing.Font("Yu Gothic Medium", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.labelCadastroParticularCartaoNumero.ForeColor = System.Drawing.Color.Teal;
+			this.labelCadastroParticularCartaoNumero.Location = new System.Drawing.Point(15, 61);
+			this.labelCadastroParticularCartaoNumero.Name = "labelCadastroParticularCartaoNumero";
+			this.labelCadastroParticularCartaoNumero.Size = new System.Drawing.Size(94, 25);
+			this.labelCadastroParticularCartaoNumero.TabIndex = 2;
+			this.labelCadastroParticularCartaoNumero.Text = "Número:";
+			// 
+			// maskedTextBoxCadastroParticularCartaoNumero
+			// 
+			this.maskedTextBoxCadastroParticularCartaoNumero.Location = new System.Drawing.Point(115, 66);
+			this.maskedTextBoxCadastroParticularCartaoNumero.Mask = "0000-0000-0000-0000";
+			this.maskedTextBoxCadastroParticularCartaoNumero.Name = "maskedTextBoxCadastroParticularCartaoNumero";
+			this.maskedTextBoxCadastroParticularCartaoNumero.Size = new System.Drawing.Size(403, 20);
+			this.maskedTextBoxCadastroParticularCartaoNumero.TabIndex = 3;
+			this.maskedTextBoxCadastroParticularCartaoNumero.ValidatingType = typeof(int);
+			// 
+			// labelCadastroParticularCartaoCodigo
+			// 
+			this.labelCadastroParticularCartaoCodigo.AutoSize = true;
+			this.labelCadastroParticularCartaoCodigo.Font = new System.Drawing.Font("Yu Gothic Medium", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.labelCadastroParticularCartaoCodigo.ForeColor = System.Drawing.Color.Teal;
+			this.labelCadastroParticularCartaoCodigo.Location = new System.Drawing.Point(15, 100);
+			this.labelCadastroParticularCartaoCodigo.Name = "labelCadastroParticularCartaoCodigo";
+			this.labelCadastroParticularCartaoCodigo.Size = new System.Drawing.Size(227, 25);
+			this.labelCadastroParticularCartaoCodigo.TabIndex = 4;
+			this.labelCadastroParticularCartaoCodigo.Text = "Código De Segurança:";
+			// 
+			// maskedTextBoxCadastroParticularCartaoCodigo
+			// 
+			this.maskedTextBoxCadastroParticularCartaoCodigo.Location = new System.Drawing.Point(248, 105);
+			this.maskedTextBoxCadastroParticularCartaoCodigo.Mask = "000";
+			this.maskedTextBoxCadastroParticularCartaoCodigo.Name = "maskedTextBoxCadastroParticularCartaoCodigo";
+			this.maskedTextBoxCadastroParticularCartaoCodigo.Size = new System.Drawing.Size(270, 20);
+			this.maskedTextBoxCadastroParticularCartaoCodigo.TabIndex = 5;
+			// 
+			// labelCadastroParticularCartaoCPF
+			// 
+			this.labelCadastroParticularCartaoCPF.AutoSize = true;
+			this.labelCadastroParticularCartaoCPF.Font = new System.Drawing.Font("Yu Gothic Medium", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.labelCadastroParticularCartaoCPF.ForeColor = System.Drawing.Color.Teal;
+			this.labelCadastroParticularCartaoCPF.Location = new System.Drawing.Point(17, 143);
+			this.labelCadastroParticularCartaoCPF.Name = "labelCadastroParticularCartaoCPF";
+			this.labelCadastroParticularCartaoCPF.Size = new System.Drawing.Size(59, 25);
+			this.labelCadastroParticularCartaoCPF.TabIndex = 6;
+			this.labelCadastroParticularCartaoCPF.Text = "CPF:";
+			// 
+			// maskedTextBoxCadastroParticularCartaoCPF
+			// 
+			this.maskedTextBoxCadastroParticularCartaoCPF.Location = new System.Drawing.Point(82, 148);
+			this.maskedTextBoxCadastroParticularCartaoCPF.Mask = "000.000.000-00";
+			this.maskedTextBoxCadastroParticularCartaoCPF.Name = "maskedTextBoxCadastroParticularCartaoCPF";
+			this.maskedTextBoxCadastroParticularCartaoCPF.Size = new System.Drawing.Size(436, 20);
+			this.maskedTextBoxCadastroParticularCartaoCPF.TabIndex = 7;
+			// 
+			// labelCadastroParticularCartaofinalizar
+			// 
+			this.labelCadastroParticularCartaofinalizar.AutoSize = true;
+			this.labelCadastroParticularCartaofinalizar.BackColor = System.Drawing.Color.Teal;
+			this.labelCadastroParticularCartaofinalizar.Font = new System.Drawing.Font("Yu Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.labelCadastroParticularCartaofinalizar.ForeColor = System.Drawing.Color.White;
+			this.labelCadastroParticularCartaofinalizar.Location = new System.Drawing.Point(479, 193);
+			this.labelCadastroParticularCartaofinalizar.Name = "labelCadastroParticularCartaofinalizar";
+			this.labelCadastroParticularCartaofinalizar.Size = new System.Drawing.Size(98, 27);
+			this.labelCadastroParticularCartaofinalizar.TabIndex = 5;
+			this.labelCadastroParticularCartaofinalizar.Text = "Finalizar";
+			this.labelCadastroParticularCartaofinalizar.Visible = false;
+			// 
+			// panelSelecaoCadastro
+			// 
+			this.panelSelecaoCadastro.Controls.Add(this.labelCadastroPaciente);
+			this.panelSelecaoCadastro.Controls.Add(this.labelCadastroMedico);
+			this.panelSelecaoCadastro.Controls.Add(this.label2);
+			this.panelSelecaoCadastro.Location = new System.Drawing.Point(186, 29);
+			this.panelSelecaoCadastro.Name = "panelSelecaoCadastro";
+			this.panelSelecaoCadastro.Size = new System.Drawing.Size(602, 559);
+			this.panelSelecaoCadastro.TabIndex = 6;
+			// 
+			// label2
+			// 
+			this.label2.AutoSize = true;
+			this.label2.Font = new System.Drawing.Font("Yu Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label2.ForeColor = System.Drawing.Color.Teal;
+			this.label2.Location = new System.Drawing.Point(23, 19);
+			this.label2.Name = "label2";
+			this.label2.Size = new System.Drawing.Size(305, 27);
+			this.label2.TabIndex = 0;
+			this.label2.Text = "Selecione o tipo de cadastro:";
+			// 
+			// labelCadastroMedico
+			// 
+			this.labelCadastroMedico.AutoSize = true;
+			this.labelCadastroMedico.BackColor = System.Drawing.Color.Teal;
+			this.labelCadastroMedico.Font = new System.Drawing.Font("Yu Gothic Medium", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.labelCadastroMedico.ForeColor = System.Drawing.Color.White;
+			this.labelCadastroMedico.Location = new System.Drawing.Point(238, 147);
+			this.labelCadastroMedico.Name = "labelCadastroMedico";
+			this.labelCadastroMedico.Size = new System.Drawing.Size(113, 35);
+			this.labelCadastroMedico.TabIndex = 1;
+			this.labelCadastroMedico.Text = "Médico";
+			// 
+			// labelCadastroPaciente
+			// 
+			this.labelCadastroPaciente.AutoSize = true;
+			this.labelCadastroPaciente.BackColor = System.Drawing.Color.Teal;
+			this.labelCadastroPaciente.Font = new System.Drawing.Font("Yu Gothic", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.labelCadastroPaciente.ForeColor = System.Drawing.Color.White;
+			this.labelCadastroPaciente.Location = new System.Drawing.Point(228, 255);
+			this.labelCadastroPaciente.Name = "labelCadastroPaciente";
+			this.labelCadastroPaciente.Size = new System.Drawing.Size(131, 35);
+			this.labelCadastroPaciente.TabIndex = 2;
+			this.labelCadastroPaciente.Text = "Paciente";
+			this.labelCadastroPaciente.Click += new System.EventHandler(this.labelCadastroPaciente_Click);
+			// 
 			// FormMainPanel
 			// 
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
 			this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(223)))), ((int)(((byte)(239)))), ((int)(((byte)(249)))));
 			this.ClientSize = new System.Drawing.Size(800, 600);
+			this.Controls.Add(this.panelSelecaoCadastro);
 			this.Controls.Add(this.panelMain);
 			this.Controls.Add(this.panelLateral);
 			this.Controls.Add(this.panelBarraSuperior);
@@ -539,8 +676,10 @@
 			this.panelCadastroConvenio.PerformLayout();
 			this.panelCadastroParticular.ResumeLayout(false);
 			this.panelCadastroParticular.PerformLayout();
-			this.panel1.ResumeLayout(false);
-			this.panel1.PerformLayout();
+			this.panelCadastroParticularCartao.ResumeLayout(false);
+			this.panelCadastroParticularCartao.PerformLayout();
+			this.panelSelecaoCadastro.ResumeLayout(false);
+			this.panelSelecaoCadastro.PerformLayout();
 			this.ResumeLayout(false);
 
         }
@@ -582,9 +721,20 @@
 		private System.Windows.Forms.Panel panelCadastroParticular;
 		private System.Windows.Forms.Label labelParticularPagamento;
 		private System.Windows.Forms.ComboBox comboBoxPagamentos;
-		private System.Windows.Forms.Panel panel1;
+		private System.Windows.Forms.Panel panelCadastroParticularCartao;
 		private System.Windows.Forms.TextBox textBoxCadastroParticularCartaoNome;
 		private System.Windows.Forms.Label labelCadastroParticularCartaoNome;
+		private System.Windows.Forms.Label labelCadastroParticularCartaoNumero;
+		private System.Windows.Forms.MaskedTextBox maskedTextBoxCadastroParticularCartaoNumero;
+		private System.Windows.Forms.Label labelCadastroParticularCartaoCodigo;
+		private System.Windows.Forms.MaskedTextBox maskedTextBoxCadastroParticularCartaoCodigo;
+		private System.Windows.Forms.Label labelCadastroParticularCartaoCPF;
+		private System.Windows.Forms.MaskedTextBox maskedTextBoxCadastroParticularCartaoCPF;
+		private System.Windows.Forms.Label labelCadastroParticularCartaofinalizar;
+		private System.Windows.Forms.Panel panelSelecaoCadastro;
+		private System.Windows.Forms.Label labelCadastroPaciente;
+		private System.Windows.Forms.Label labelCadastroMedico;
+		private System.Windows.Forms.Label label2;
 	}
 }
 

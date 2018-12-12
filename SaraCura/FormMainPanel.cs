@@ -32,7 +32,7 @@ namespace SaraCura
 			InitializeComponent();
 			SetStyle(ControlStyles.ResizeRedraw, true);
 			MainVisibility(true);
-			CadastrosVisibility(false);
+			CadastroVisibility(false);
 		}
 		protected override void WndProc(ref Message m)
 		{
@@ -73,7 +73,7 @@ namespace SaraCura
 		private void label3_Click_1(object sender, EventArgs e)
 		{
 			pressButton(telaInicial);
-			CadastrosVisibility(false);
+			CadastroVisibility(false);
 			MainVisibility(true);
 		}
 		private void MainVisibility(bool status)
@@ -81,7 +81,14 @@ namespace SaraCura
 			pictureBoxImagem.Visible = status;
 			pictureBoxName.Visible = status;
 		}
-		private void CadastrosVisibility(bool status)
+		private void CadastroVisibility(bool status)
+		{
+			panelSelecaoCadastro.Visible = status;
+			labelCadastroMedico.Visible = status;
+			labelCadastroPaciente.Visible = status;
+			CadastroPacienteVisibility(false);
+		}
+		private void CadastroPacienteVisibility(bool status)
 		{
 			panelConsultas.Visible = status;
 			labelConsultasTitulo.Visible = status;
@@ -112,12 +119,25 @@ namespace SaraCura
 			comboBoxPagamentos.Visible = status;
 			labelCadastroParticularCartaoNome.Visible = status;
 			textBoxCadastroParticularCartaoNome.Visible = status;
+			CadastroParticularCartaoVisibility(false);
+		}
+		private void CadastroParticularCartaoVisibility(bool status)
+		{
+			panelCadastroParticularCartao.Visible = status;
+			labelCadastroParticularCartaoNome.Visible = status;
+			textBoxCadastroParticularCartaoNome.Visible = status;
+			labelCadastroParticularCartaoNumero.Visible = status;
+			maskedTextBoxCadastroParticularCartaoNumero.Visible = status;
+			labelCadastroParticularCartaoCodigo.Visible = status;
+			maskedTextBoxCadastroParticularCartaoCodigo.Visible = status;
+			labelCadastroParticularCartaoCPF.Visible = status;
+			labelCadastroParticularCartaofinalizar.Visible = status;
 		}
 		private void label4_Click(object sender, EventArgs e)
 		{
 			pressButton(cadastros);
 			MainVisibility(false);
-			CadastrosVisibility(true);
+			CadastroVisibility(true);
 		}
 		private void sair_Click(object sender, EventArgs e)
 		{
@@ -131,6 +151,8 @@ namespace SaraCura
 		private void exames_Click(object sender, EventArgs e)
 		{
 			pressButton(exames);
+			MainVisibility(false);
+			CadastroVisibility(false);
 		}
 		private void cadastros_Click(object sender, EventArgs e)
 		{
@@ -176,6 +198,7 @@ namespace SaraCura
 			if (checkBoxPagamentoConvenio.Checked)
 			{
 				checkBoxPagamentoParticular.Checked = false;
+				CadastroParticularVisibility(false);
 				CadastroConvenioVisibility(true);
 			}
 		}
@@ -223,13 +246,37 @@ namespace SaraCura
 				return;
 			}
 		}
-
 		private void comboBoxPagamentos_SelectedIndexChanged(object sender, EventArgs e)
 		{
-			if (comboBoxPagamentos.SelectedText == "Crédito")
+			if (comboBoxPagamentos.SelectedItem.Equals("Crédito"))
 			{
-				MessageBox.Show("deu certo");
+				CadastroParticularCartaoVisibility(true);
 			}
+			else if(comboBoxPagamentos.SelectedItem.Equals("Cheque"))
+			{
+				CadastroParticularCartaoVisibility(false);
+				var confirm = MessageBox.Show("Confirmar Pagamento em cheque:", "Aviso", MessageBoxButtons.OKCancel);
+			}
+			else if(comboBoxPagamentos.SelectedItem.Equals("Débito"))
+			{
+				CadastroParticularCartaoVisibility(true);
+			}
+			else
+			{
+				CadastroParticularCartaoVisibility(false);
+				var confirm = MessageBox.Show("Confirmar pagamento em dinheiro:", "Aviso", MessageBoxButtons.OKCancel);
+			}
+		}
+
+		private void labelCadastroParticularChequeDinheiroFinalizar_Click(object sender, EventArgs e)
+		{
+
+		}
+
+		private void labelCadastroPaciente_Click(object sender, EventArgs e)
+		{
+			CadastroVisibility(false);
+			CadastroPacienteVisibility(true);
 		}
 	}
 }
