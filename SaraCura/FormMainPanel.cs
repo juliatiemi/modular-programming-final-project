@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -31,7 +32,7 @@ namespace SaraCura
 			InitializeComponent();
 			SetStyle(ControlStyles.ResizeRedraw, true);
 			MainVisibility(true);
-			ConsultasVisibility(false);
+			CadastrosVisibility(false);
 		}
 		protected override void WndProc(ref Message m)
 		{
@@ -63,16 +64,16 @@ namespace SaraCura
 		private void pressButton(Label x)
 		{
 			telaInicial.BackColor = c2;
-			consultas.BackColor = c2;
-			exames.BackColor = c2;
 			cadastros.BackColor = c2;
+			exames.BackColor = c2;
+			consultas.BackColor = c2;
 			sair.BackColor = c2;
 			x.BackColor = c3;
 		}
 		private void label3_Click_1(object sender, EventArgs e)
 		{
 			pressButton(telaInicial);
-			ConsultasVisibility(false);
+			CadastrosVisibility(false);
 			MainVisibility(true);
 		}
 		private void MainVisibility(bool status)
@@ -80,23 +81,43 @@ namespace SaraCura
 			pictureBoxImagem.Visible = status;
 			pictureBoxName.Visible = status;
 		}
-		private void ConsultasVisibility(bool status)
+		private void CadastrosVisibility(bool status)
 		{
 			panelConsultas.Visible = status;
 			labelConsultasTitulo.Visible = status;
 			labelConsultasNome.Visible = status;
 			textBoxConsultasCadastroNome.Visible = status;
 			labelCadastroTelefone.Visible = status;
-			textBoxCadastroTelefone.Visible = status;
+			maskedTextBoxCadastroTelefone.Visible = status;
 			labelCadastroPagamento.Visible = status;
 			checkBoxPagamentoConvenio.Visible = status;
 			checkBoxPagamentoParticular.Visible = status;
+			labelCadastroEmail.Visible = status;
+			textBoxCadastroEmail.Visible = status;
+			CadastroConvenioVisibility(false);
+			CadastroParticularVisibility(false);
+		}
+		private void CadastroConvenioVisibility(bool status)
+		{
+			panelCadastroConvenio.Visible = status;
+			textBoxCadastroNomeConvênio.Visible = status;
+			labelCadastroConvenioAutorizacao.Visible = status;
+			labelCadastroConvenioNome.Visible = status;
+			labelCadastroConvenioNumero.Visible = status;
+		}
+		private void CadastroParticularVisibility(bool status)
+		{
+			panelCadastroParticular.Visible = status;
+			panelCadastroParticular.Visible = status;
+			comboBoxPagamentos.Visible = status;
+			labelCadastroParticularCartaoNome.Visible = status;
+			textBoxCadastroParticularCartaoNome.Visible = status;
 		}
 		private void label4_Click(object sender, EventArgs e)
 		{
-			pressButton(consultas);
+			pressButton(cadastros);
 			MainVisibility(false);
-			ConsultasVisibility(true);
+			CadastrosVisibility(true);
 		}
 		private void sair_Click(object sender, EventArgs e)
 		{
@@ -111,10 +132,9 @@ namespace SaraCura
 		{
 			pressButton(exames);
 		}
-
 		private void cadastros_Click(object sender, EventArgs e)
 		{
-			pressButton(cadastros);
+			pressButton(consultas);
 		}
 		private void panel1_MouseMove(object sender, MouseEventArgs e)
 		{
@@ -147,11 +167,16 @@ namespace SaraCura
 		{
 
 		}
+		private void BoxPagamentoConvenioVisibility(bool status)
+		{
+			labelCadastroConvenioNome.Visible = status;
+		}
 		private void checkBoxPagamentoConvenio_CheckedChanged(object sender, EventArgs e)
 		{
 			if (checkBoxPagamentoConvenio.Checked)
 			{
 				checkBoxPagamentoParticular.Checked = false;
+				CadastroConvenioVisibility(true);
 			}
 		}
 		private void checkBoxPagamentoParticular_CheckedChanged(object sender, EventArgs e)
@@ -159,6 +184,51 @@ namespace SaraCura
 			if (checkBoxPagamentoParticular.Checked)
 			{
 				checkBoxPagamentoConvenio.Checked = false;
+				CadastroParticularVisibility(true);
+				CadastroConvenioVisibility(false);
+			}
+		}
+		private void labelCadastroConvenioAutorizacao_Click(object sender, EventArgs e)
+		{
+			MailAddress email;
+			string nome, convenio;
+			int telefone, matricula;
+			nome = textBoxConsultasCadastroNome.Text;
+			if(!nome.All(char.IsLetter))
+			{
+				MessageBox.Show("Nome inválido!");
+				textBoxConsultasCadastroNome.Text = "";
+				return;
+			}
+			try
+			{
+				telefone = int.Parse(maskedTextBoxCadastroTelefone.Text.Replace(" ", "").Replace("(", "").Replace(")", "").Replace("-", ""));
+			}
+			catch
+			{
+				MessageBox.Show("Telefone Inválido!");
+				maskedTextBoxCadastroTelefone.Text = "";
+				return;
+			}
+			email = new MailAddress(textBoxCadastroEmail.Text);
+			convenio = textBoxCadastroNomeConvênio.Text;
+			try
+			{
+				matricula = int.Parse(textBoxConvenioMatriculacliente.Text);
+			}
+			catch
+			{
+				MessageBox.Show("Número de matrícula inválido!");
+				textBoxConvenioMatriculacliente.Text = "";
+				return;
+			}
+		}
+
+		private void comboBoxPagamentos_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			if (comboBoxPagamentos.SelectedText == "Crédito")
+			{
+				MessageBox.Show("deu certo");
 			}
 		}
 	}
