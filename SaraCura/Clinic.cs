@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SimulacaoDeDatabase;
+using System;
 using System.Collections.Generic;
 
 namespace Clinica
@@ -23,7 +24,7 @@ namespace Clinica
 
     public class Agenda
     {
-        private int tempoConsulta;
+        public int tempoConsulta;
         private DateTime chegada;
         private DateTime saida;
         private List<string> dias = new List<string>();
@@ -91,6 +92,8 @@ namespace Clinica
             this.especialidades = especialidades;
             this.agenda = agenda;
         }
+
+        //TODO: gerar um método adicionar médico para ser usado no botão de ok do cadastro do médico. Adicionar a lista Sessao.MedicosCadastrados
         
     }
 
@@ -100,7 +103,7 @@ namespace Clinica
 		private 
 	}*/
 
-    class Consulta
+    public class Consulta
     {
         private Paciente paciente;
         private Medico medico;
@@ -126,9 +129,11 @@ namespace Clinica
                 }
             }
         }
+
+        //TODO: gerar um método para agendar consulta, retirando da lista do médico o horário selecionado
     }
 
-    class Paciente
+    public class Paciente
     {
         private string nome;
         private int idade;
@@ -137,6 +142,37 @@ namespace Clinica
         private double altura;
         private bool atendimento;
         public bool GetAtendimento => atendimento;
+
+
+        //TODO: gerar um método adicionar paciente para ser usado no botão de ok do cadastro do paciente. Adicionar a lista Sessao.PacienteCadastrados
     }
-    
+
+    public class Sessao
+    {
+        public List<Medico> MedicosCadastrados;
+        public List<Paciente> PacientesCadastrados;
+        public List<Equipamento> EquipamentosCadastrados;
+        public List<Consulta> ConsultasAgendadas;
+
+        public Sessao()
+        {
+            MedicosCadastrados = new List<Medico>();
+            PacientesCadastrados = new List<Paciente>();
+            EquipamentosCadastrados = new List<Equipamento>();
+            ConsultasAgendadas = new List<Consulta>();
+        }
+
+        public void CriarSessao()
+        {
+            for (int i = 0; i < Constantes.Constantes.medicosGerados; i++)
+            {
+                MedicosCadastrados.Add(GeradorAleatorio.GerarMedicoAleatório());
+            }
+
+            //TODO: gerar equipamentos
+            
+
+        }
+    }
+
 }

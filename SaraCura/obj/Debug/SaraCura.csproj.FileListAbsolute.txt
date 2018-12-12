@@ -21,3 +21,12 @@ D:\otavi\Documents\Code\C#\SaraCura\SaraCura\obj\Debug\SaraCura.csprojAssemblyRe
 C:\Users\julia\Documents\SaraCura-master\SaraCura\bin\Debug\SaraCura.exe.config
 C:\Users\julia\Documents\SaraCura-master\SaraCura\obj\Debug\SaraCura.exe
 C:\Users\julia\Documents\SaraCura-master\SaraCura\obj\Debug\SaraCura.pdb
+C:\Users\julia\Documents\programcao-modular\SaraCura\bin\Debug\SaraCura.exe.config
+C:\Users\julia\Documents\programcao-modular\SaraCura\obj\Debug\SaraCura.exe
+C:\Users\julia\Documents\programcao-modular\SaraCura\obj\Debug\SaraCura.pdb
+C:\Users\julia\Documents\programcao-modular\SaraCura\bin\Debug\SaraCura.exe
+C:\Users\julia\Documents\programcao-modular\SaraCura\bin\Debug\SaraCura.pdb
+C:\Users\julia\Documents\programcao-modular\SaraCura\obj\Debug\SaraCura.csprojResolveAssemblyReference.cache
+C:\Users\julia\Documents\programcao-modular\SaraCura\obj\Debug\SaraCura.FormMainPanel.resources
+C:\Users\julia\Documents\programcao-modular\SaraCura\obj\Debug\SaraCura.Properties.Resources.resources
+C:\Users\julia\Documents\programcao-modular\SaraCura\obj\Debug\SaraCura.csproj.GenerateResource.Cache

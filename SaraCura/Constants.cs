@@ -22,7 +22,7 @@
         };
 
         #region gerador
-        public const int medicosGerados = 5;
+        public const int medicosGerados = 10;
         #endregion
 
     }

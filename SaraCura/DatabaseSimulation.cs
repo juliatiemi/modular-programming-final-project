@@ -11,6 +11,8 @@ namespace SimulacaoDeDatabase
 
         private static Random _random = new Random();
 
+        //TODO: gerar equipamentos não tão aleatórios, sepá gerar uma lista de 5 especialidades e fazer seus respectivos equipamentos(?)
+
         public static Medico GerarMedicoAleatório()
         {
             string nome;
