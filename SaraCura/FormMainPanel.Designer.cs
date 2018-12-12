@@ -37,9 +37,9 @@
 			this.panelBarraSuperiorEsquerda = new System.Windows.Forms.Panel();
 			this.panelLateral = new System.Windows.Forms.Panel();
 			this.sair = new System.Windows.Forms.Label();
-			this.cadastros = new System.Windows.Forms.Label();
-			this.exames = new System.Windows.Forms.Label();
 			this.consultas = new System.Windows.Forms.Label();
+			this.exames = new System.Windows.Forms.Label();
+			this.cadastros = new System.Windows.Forms.Label();
 			this.telaInicial = new System.Windows.Forms.Label();
 			this.pageSetupDialog1 = new System.Windows.Forms.PageSetupDialog();
 			this.pictureBoxImagem = new System.Windows.Forms.PictureBox();
@@ -49,16 +49,33 @@
 			this.checkBoxPagamentoParticular = new System.Windows.Forms.CheckBox();
 			this.checkBoxPagamentoConvenio = new System.Windows.Forms.CheckBox();
 			this.labelCadastroPagamento = new System.Windows.Forms.Label();
-			this.textBoxCadastroTelefone = new System.Windows.Forms.TextBox();
 			this.labelCadastroTelefone = new System.Windows.Forms.Label();
 			this.textBoxConsultasCadastroNome = new System.Windows.Forms.TextBox();
 			this.labelConsultasNome = new System.Windows.Forms.Label();
 			this.labelConsultasTitulo = new System.Windows.Forms.Label();
+			this.labelCadastroConvenioNome = new System.Windows.Forms.Label();
+			this.textBoxCadastroNomeConvênio = new System.Windows.Forms.TextBox();
+			this.labelCadastroConvenioNumero = new System.Windows.Forms.Label();
+			this.labelCadastroConvenioAutorizacao = new System.Windows.Forms.Label();
+			this.panelCadastroConvenio = new System.Windows.Forms.Panel();
+			this.labelCadastroEmail = new System.Windows.Forms.Label();
+			this.maskedTextBoxCadastroTelefone = new System.Windows.Forms.MaskedTextBox();
+			this.textBoxCadastroEmail = new System.Windows.Forms.TextBox();
+			this.textBoxConvenioMatriculacliente = new System.Windows.Forms.TextBox();
+			this.panelCadastroParticular = new System.Windows.Forms.Panel();
+			this.labelParticularPagamento = new System.Windows.Forms.Label();
+			this.comboBoxPagamentos = new System.Windows.Forms.ComboBox();
+			this.panel1 = new System.Windows.Forms.Panel();
+			this.labelCadastroParticularCartaoNome = new System.Windows.Forms.Label();
+			this.textBoxCadastroParticularCartaoNome = new System.Windows.Forms.TextBox();
 			this.panelBarraSuperior.SuspendLayout();
 			this.panelLateral.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBoxImagem)).BeginInit();
 			this.panelMain.SuspendLayout();
 			this.panelConsultas.SuspendLayout();
+			this.panelCadastroConvenio.SuspendLayout();
+			this.panelCadastroParticular.SuspendLayout();
+			this.panel1.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// labelSair_X
@@ -143,9 +160,9 @@
 			// 
 			this.panelLateral.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(154)))), ((int)(((byte)(199)))), ((int)(((byte)(217)))));
 			this.panelLateral.Controls.Add(this.sair);
-			this.panelLateral.Controls.Add(this.cadastros);
-			this.panelLateral.Controls.Add(this.exames);
 			this.panelLateral.Controls.Add(this.consultas);
+			this.panelLateral.Controls.Add(this.exames);
+			this.panelLateral.Controls.Add(this.cadastros);
 			this.panelLateral.Controls.Add(this.telaInicial);
 			this.panelLateral.Dock = System.Windows.Forms.DockStyle.Left;
 			this.panelLateral.Location = new System.Drawing.Point(0, 24);
@@ -165,17 +182,17 @@
 			this.sair.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			this.sair.Click += new System.EventHandler(this.sair_Click);
 			// 
-			// cadastros
+			// consultas
 			// 
-			this.cadastros.Font = new System.Drawing.Font("Yu Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.cadastros.ForeColor = System.Drawing.Color.White;
-			this.cadastros.Location = new System.Drawing.Point(0, 150);
-			this.cadastros.Name = "cadastros";
-			this.cadastros.Size = new System.Drawing.Size(180, 50);
-			this.cadastros.TabIndex = 8;
-			this.cadastros.Text = "   Cadastros";
-			this.cadastros.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			this.cadastros.Click += new System.EventHandler(this.cadastros_Click);
+			this.consultas.Font = new System.Drawing.Font("Yu Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.consultas.ForeColor = System.Drawing.Color.White;
+			this.consultas.Location = new System.Drawing.Point(0, 150);
+			this.consultas.Name = "consultas";
+			this.consultas.Size = new System.Drawing.Size(180, 50);
+			this.consultas.TabIndex = 8;
+			this.consultas.Text = "   Consultas";
+			this.consultas.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.consultas.Click += new System.EventHandler(this.cadastros_Click);
 			// 
 			// exames
 			// 
@@ -189,17 +206,17 @@
 			this.exames.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			this.exames.Click += new System.EventHandler(this.exames_Click);
 			// 
-			// consultas
+			// cadastros
 			// 
-			this.consultas.Font = new System.Drawing.Font("Yu Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.consultas.ForeColor = System.Drawing.Color.White;
-			this.consultas.Location = new System.Drawing.Point(0, 50);
-			this.consultas.Name = "consultas";
-			this.consultas.Size = new System.Drawing.Size(180, 50);
-			this.consultas.TabIndex = 6;
-			this.consultas.Text = "   Consultas";
-			this.consultas.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			this.consultas.Click += new System.EventHandler(this.label4_Click);
+			this.cadastros.Font = new System.Drawing.Font("Yu Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.cadastros.ForeColor = System.Drawing.Color.White;
+			this.cadastros.Location = new System.Drawing.Point(0, 50);
+			this.cadastros.Name = "cadastros";
+			this.cadastros.Size = new System.Drawing.Size(180, 50);
+			this.cadastros.TabIndex = 6;
+			this.cadastros.Text = "   Cadastros";
+			this.cadastros.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.cadastros.Click += new System.EventHandler(this.label4_Click);
 			// 
 			// telaInicial
 			// 
@@ -247,10 +264,14 @@
 			// 
 			// panelConsultas
 			// 
+			this.panelConsultas.Controls.Add(this.panelCadastroParticular);
+			this.panelConsultas.Controls.Add(this.maskedTextBoxCadastroTelefone);
+			this.panelConsultas.Controls.Add(this.textBoxCadastroEmail);
+			this.panelConsultas.Controls.Add(this.labelCadastroEmail);
+			this.panelConsultas.Controls.Add(this.panelCadastroConvenio);
 			this.panelConsultas.Controls.Add(this.checkBoxPagamentoParticular);
 			this.panelConsultas.Controls.Add(this.checkBoxPagamentoConvenio);
 			this.panelConsultas.Controls.Add(this.labelCadastroPagamento);
-			this.panelConsultas.Controls.Add(this.textBoxCadastroTelefone);
 			this.panelConsultas.Controls.Add(this.labelCadastroTelefone);
 			this.panelConsultas.Controls.Add(this.textBoxConsultasCadastroNome);
 			this.panelConsultas.Controls.Add(this.labelConsultasNome);
@@ -266,7 +287,7 @@
 			this.checkBoxPagamentoParticular.AutoSize = true;
 			this.checkBoxPagamentoParticular.Font = new System.Drawing.Font("Yu Gothic Medium", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.checkBoxPagamentoParticular.ForeColor = System.Drawing.Color.Teal;
-			this.checkBoxPagamentoParticular.Location = new System.Drawing.Point(316, 202);
+			this.checkBoxPagamentoParticular.Location = new System.Drawing.Point(313, 241);
 			this.checkBoxPagamentoParticular.Name = "checkBoxPagamentoParticular";
 			this.checkBoxPagamentoParticular.Size = new System.Drawing.Size(128, 29);
 			this.checkBoxPagamentoParticular.TabIndex = 7;
@@ -279,7 +300,7 @@
 			this.checkBoxPagamentoConvenio.AutoSize = true;
 			this.checkBoxPagamentoConvenio.Font = new System.Drawing.Font("Yu Gothic Medium", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.checkBoxPagamentoConvenio.ForeColor = System.Drawing.Color.Teal;
-			this.checkBoxPagamentoConvenio.Location = new System.Drawing.Point(23, 194);
+			this.checkBoxPagamentoConvenio.Location = new System.Drawing.Point(20, 241);
 			this.checkBoxPagamentoConvenio.Name = "checkBoxPagamentoConvenio";
 			this.checkBoxPagamentoConvenio.Size = new System.Drawing.Size(121, 29);
 			this.checkBoxPagamentoConvenio.TabIndex = 6;
@@ -292,18 +313,11 @@
 			this.labelCadastroPagamento.AutoSize = true;
 			this.labelCadastroPagamento.Font = new System.Drawing.Font("Yu Gothic Medium", 16.25F, System.Drawing.FontStyle.Bold);
 			this.labelCadastroPagamento.ForeColor = System.Drawing.Color.Teal;
-			this.labelCadastroPagamento.Location = new System.Drawing.Point(18, 144);
+			this.labelCadastroPagamento.Location = new System.Drawing.Point(16, 205);
 			this.labelCadastroPagamento.Name = "labelCadastroPagamento";
 			this.labelCadastroPagamento.Size = new System.Drawing.Size(249, 29);
 			this.labelCadastroPagamento.TabIndex = 5;
 			this.labelCadastroPagamento.Text = "Forma De Pagamento";
-			// 
-			// textBoxCadastroTelefone
-			// 
-			this.textBoxCadastroTelefone.Location = new System.Drawing.Point(128, 113);
-			this.textBoxCadastroTelefone.Name = "textBoxCadastroTelefone";
-			this.textBoxCadastroTelefone.Size = new System.Drawing.Size(417, 20);
-			this.textBoxCadastroTelefone.TabIndex = 4;
 			// 
 			// labelCadastroTelefone
 			// 
@@ -349,6 +363,157 @@
 			this.labelConsultasTitulo.Text = "Cadastro Do Paciente";
 			this.labelConsultasTitulo.Visible = false;
 			// 
+			// labelCadastroConvenioNome
+			// 
+			this.labelCadastroConvenioNome.AutoSize = true;
+			this.labelCadastroConvenioNome.Font = new System.Drawing.Font("Yu Gothic Medium", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.labelCadastroConvenioNome.ForeColor = System.Drawing.Color.Teal;
+			this.labelCadastroConvenioNome.Location = new System.Drawing.Point(3, 9);
+			this.labelCadastroConvenioNome.Name = "labelCadastroConvenioNome";
+			this.labelCadastroConvenioNome.Size = new System.Drawing.Size(203, 25);
+			this.labelCadastroConvenioNome.TabIndex = 0;
+			this.labelCadastroConvenioNome.Text = "Nome Do Convênio:";
+			// 
+			// textBoxCadastroNomeConvênio
+			// 
+			this.textBoxCadastroNomeConvênio.Location = new System.Drawing.Point(212, 14);
+			this.textBoxCadastroNomeConvênio.Name = "textBoxCadastroNomeConvênio";
+			this.textBoxCadastroNomeConvênio.Size = new System.Drawing.Size(329, 20);
+			this.textBoxCadastroNomeConvênio.TabIndex = 1;
+			// 
+			// labelCadastroConvenioNumero
+			// 
+			this.labelCadastroConvenioNumero.AutoSize = true;
+			this.labelCadastroConvenioNumero.Font = new System.Drawing.Font("Yu Gothic Medium", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.labelCadastroConvenioNumero.ForeColor = System.Drawing.Color.Teal;
+			this.labelCadastroConvenioNumero.Location = new System.Drawing.Point(3, 44);
+			this.labelCadastroConvenioNumero.Name = "labelCadastroConvenioNumero";
+			this.labelCadastroConvenioNumero.Size = new System.Drawing.Size(220, 25);
+			this.labelCadastroConvenioNumero.TabIndex = 2;
+			this.labelCadastroConvenioNumero.Text = "Matrícula Do Cliente:";
+			// 
+			// labelCadastroConvenioAutorizacao
+			// 
+			this.labelCadastroConvenioAutorizacao.AutoSize = true;
+			this.labelCadastroConvenioAutorizacao.BackColor = System.Drawing.Color.SteelBlue;
+			this.labelCadastroConvenioAutorizacao.Font = new System.Drawing.Font("Yu Gothic", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.labelCadastroConvenioAutorizacao.ForeColor = System.Drawing.Color.White;
+			this.labelCadastroConvenioAutorizacao.Location = new System.Drawing.Point(14, 104);
+			this.labelCadastroConvenioAutorizacao.Name = "labelCadastroConvenioAutorizacao";
+			this.labelCadastroConvenioAutorizacao.Size = new System.Drawing.Size(221, 27);
+			this.labelCadastroConvenioAutorizacao.TabIndex = 4;
+			this.labelCadastroConvenioAutorizacao.Text = "Solicitar Autirozação";
+			this.labelCadastroConvenioAutorizacao.Click += new System.EventHandler(this.labelCadastroConvenioAutorizacao_Click);
+			// 
+			// panelCadastroConvenio
+			// 
+			this.panelCadastroConvenio.Controls.Add(this.textBoxConvenioMatriculacliente);
+			this.panelCadastroConvenio.Controls.Add(this.textBoxCadastroNomeConvênio);
+			this.panelCadastroConvenio.Controls.Add(this.labelCadastroConvenioNome);
+			this.panelCadastroConvenio.Controls.Add(this.labelCadastroConvenioAutorizacao);
+			this.panelCadastroConvenio.Controls.Add(this.labelCadastroConvenioNumero);
+			this.panelCadastroConvenio.Location = new System.Drawing.Point(3, 276);
+			this.panelCadastroConvenio.Name = "panelCadastroConvenio";
+			this.panelCadastroConvenio.Size = new System.Drawing.Size(590, 279);
+			this.panelCadastroConvenio.TabIndex = 8;
+			// 
+			// labelCadastroEmail
+			// 
+			this.labelCadastroEmail.AutoSize = true;
+			this.labelCadastroEmail.Font = new System.Drawing.Font("Yu Gothic Medium", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.labelCadastroEmail.ForeColor = System.Drawing.Color.Teal;
+			this.labelCadastroEmail.Location = new System.Drawing.Point(16, 144);
+			this.labelCadastroEmail.Name = "labelCadastroEmail";
+			this.labelCadastroEmail.Size = new System.Drawing.Size(82, 25);
+			this.labelCadastroEmail.TabIndex = 9;
+			this.labelCadastroEmail.Text = "E-Mail:";
+			// 
+			// maskedTextBoxCadastroTelefone
+			// 
+			this.maskedTextBoxCadastroTelefone.Location = new System.Drawing.Point(125, 112);
+			this.maskedTextBoxCadastroTelefone.Mask = "(00) 00000-0000";
+			this.maskedTextBoxCadastroTelefone.Name = "maskedTextBoxCadastroTelefone";
+			this.maskedTextBoxCadastroTelefone.Size = new System.Drawing.Size(419, 20);
+			this.maskedTextBoxCadastroTelefone.TabIndex = 11;
+			// 
+			// textBoxCadastroEmail
+			// 
+			this.textBoxCadastroEmail.Location = new System.Drawing.Point(109, 149);
+			this.textBoxCadastroEmail.Name = "textBoxCadastroEmail";
+			this.textBoxCadastroEmail.Size = new System.Drawing.Size(435, 20);
+			this.textBoxCadastroEmail.TabIndex = 10;
+			// 
+			// textBoxConvenioMatriculacliente
+			// 
+			this.textBoxConvenioMatriculacliente.Location = new System.Drawing.Point(231, 49);
+			this.textBoxConvenioMatriculacliente.Name = "textBoxConvenioMatriculacliente";
+			this.textBoxConvenioMatriculacliente.Size = new System.Drawing.Size(310, 20);
+			this.textBoxConvenioMatriculacliente.TabIndex = 3;
+			// 
+			// panelCadastroParticular
+			// 
+			this.panelCadastroParticular.Controls.Add(this.panel1);
+			this.panelCadastroParticular.Controls.Add(this.comboBoxPagamentos);
+			this.panelCadastroParticular.Controls.Add(this.labelParticularPagamento);
+			this.panelCadastroParticular.Location = new System.Drawing.Point(3, 276);
+			this.panelCadastroParticular.Name = "panelCadastroParticular";
+			this.panelCadastroParticular.Size = new System.Drawing.Size(590, 279);
+			this.panelCadastroParticular.TabIndex = 12;
+			this.panelCadastroParticular.Visible = false;
+			// 
+			// labelParticularPagamento
+			// 
+			this.labelParticularPagamento.AutoSize = true;
+			this.labelParticularPagamento.Font = new System.Drawing.Font("Yu Gothic Medium", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.labelParticularPagamento.ForeColor = System.Drawing.Color.Teal;
+			this.labelParticularPagamento.Location = new System.Drawing.Point(11, 14);
+			this.labelParticularPagamento.Name = "labelParticularPagamento";
+			this.labelParticularPagamento.Size = new System.Drawing.Size(355, 25);
+			this.labelParticularPagamento.TabIndex = 0;
+			this.labelParticularPagamento.Text = "Selecione o método de pagamento:";
+			// 
+			// comboBoxPagamentos
+			// 
+			this.comboBoxPagamentos.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.comboBoxPagamentos.FormattingEnabled = true;
+			this.comboBoxPagamentos.Items.AddRange(new object[] {
+            "Crédito",
+            "Cheque",
+            "Débito",
+            "Dinheiro"});
+			this.comboBoxPagamentos.Location = new System.Drawing.Point(19, 49);
+			this.comboBoxPagamentos.Name = "comboBoxPagamentos";
+			this.comboBoxPagamentos.Size = new System.Drawing.Size(347, 21);
+			this.comboBoxPagamentos.TabIndex = 1;
+			this.comboBoxPagamentos.SelectedIndexChanged += new System.EventHandler(this.comboBoxPagamentos_SelectedIndexChanged);
+			// 
+			// panel1
+			// 
+			this.panel1.Controls.Add(this.textBoxCadastroParticularCartaoNome);
+			this.panel1.Controls.Add(this.labelCadastroParticularCartaoNome);
+			this.panel1.Location = new System.Drawing.Point(23, 89);
+			this.panel1.Name = "panel1";
+			this.panel1.Size = new System.Drawing.Size(557, 187);
+			this.panel1.TabIndex = 2;
+			// 
+			// labelCadastroParticularCartaoNome
+			// 
+			this.labelCadastroParticularCartaoNome.AutoSize = true;
+			this.labelCadastroParticularCartaoNome.Font = new System.Drawing.Font("Yu Gothic Medium", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.labelCadastroParticularCartaoNome.ForeColor = System.Drawing.Color.Teal;
+			this.labelCadastroParticularCartaoNome.Location = new System.Drawing.Point(15, 13);
+			this.labelCadastroParticularCartaoNome.Name = "labelCadastroParticularCartaoNome";
+			this.labelCadastroParticularCartaoNome.Size = new System.Drawing.Size(74, 25);
+			this.labelCadastroParticularCartaoNome.TabIndex = 0;
+			this.labelCadastroParticularCartaoNome.Text = "Nome:";
+			// 
+			// textBoxCadastroParticularCartaoNome
+			// 
+			this.textBoxCadastroParticularCartaoNome.Location = new System.Drawing.Point(95, 18);
+			this.textBoxCadastroParticularCartaoNome.Name = "textBoxCadastroParticularCartaoNome";
+			this.textBoxCadastroParticularCartaoNome.Size = new System.Drawing.Size(423, 20);
+			this.textBoxCadastroParticularCartaoNome.TabIndex = 1;
+			// 
 			// FormMainPanel
 			// 
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -370,6 +535,12 @@
 			this.panelMain.PerformLayout();
 			this.panelConsultas.ResumeLayout(false);
 			this.panelConsultas.PerformLayout();
+			this.panelCadastroConvenio.ResumeLayout(false);
+			this.panelCadastroConvenio.PerformLayout();
+			this.panelCadastroParticular.ResumeLayout(false);
+			this.panelCadastroParticular.PerformLayout();
+			this.panel1.ResumeLayout(false);
+			this.panel1.PerformLayout();
 			this.ResumeLayout(false);
 
         }
@@ -381,9 +552,9 @@
         private System.Windows.Forms.Panel panelLateral;
         private System.Windows.Forms.PageSetupDialog pageSetupDialog1;
         private System.Windows.Forms.Label telaInicial;
-        private System.Windows.Forms.Label consultas;
-        private System.Windows.Forms.Label sair;
         private System.Windows.Forms.Label cadastros;
+        private System.Windows.Forms.Label sair;
+        private System.Windows.Forms.Label consultas;
         private System.Windows.Forms.Label exames;
         private System.Windows.Forms.Label labelMaximiza;
 		private System.Windows.Forms.Label labelMinimizar_;
@@ -394,12 +565,26 @@
 		private System.Windows.Forms.Label labelConsultasTitulo;
 		private System.Windows.Forms.Label labelConsultasNome;
 		private System.Windows.Forms.TextBox textBoxConsultasCadastroNome;
-		private System.Windows.Forms.TextBox textBoxCadastroTelefone;
 		private System.Windows.Forms.Label labelCadastroTelefone;
 		private System.Windows.Forms.Label labelCadastroPagamento;
 		private System.Windows.Forms.CheckBox checkBoxPagamentoConvenio;
 		private System.Windows.Forms.CheckBox checkBoxPagamentoParticular;
 		private System.Windows.Forms.Label label1;
+		private System.Windows.Forms.Panel panelCadastroConvenio;
+		private System.Windows.Forms.Label labelCadastroConvenioAutorizacao;
+		private System.Windows.Forms.Label labelCadastroConvenioNumero;
+		private System.Windows.Forms.TextBox textBoxCadastroNomeConvênio;
+		private System.Windows.Forms.Label labelCadastroConvenioNome;
+		private System.Windows.Forms.Label labelCadastroEmail;
+		private System.Windows.Forms.MaskedTextBox maskedTextBoxCadastroTelefone;
+		private System.Windows.Forms.TextBox textBoxCadastroEmail;
+		private System.Windows.Forms.TextBox textBoxConvenioMatriculacliente;
+		private System.Windows.Forms.Panel panelCadastroParticular;
+		private System.Windows.Forms.Label labelParticularPagamento;
+		private System.Windows.Forms.ComboBox comboBoxPagamentos;
+		private System.Windows.Forms.Panel panel1;
+		private System.Windows.Forms.TextBox textBoxCadastroParticularCartaoNome;
+		private System.Windows.Forms.Label labelCadastroParticularCartaoNome;
 	}
 }
 
