@@ -1,0 +1,23 @@
+C:\Users\Raphael Augusto\Documents\GitHub\GUI-TP-PM\SaraCura\SaraCura\bin\Debug\SaraCura.exe.config
+C:\Users\Raphael Augusto\Documents\GitHub\GUI-TP-PM\SaraCura\SaraCura\bin\Debug\SaraCura.exe
+C:\Users\Raphael Augusto\Documents\GitHub\GUI-TP-PM\SaraCura\SaraCura\bin\Debug\SaraCura.pdb
+C:\Users\Raphael Augusto\Documents\GitHub\GUI-TP-PM\SaraCura\SaraCura\obj\Debug\SaraCura.csprojAssemblyReference.cache
+C:\Users\Raphael Augusto\Documents\GitHub\GUI-TP-PM\SaraCura\SaraCura\obj\Debug\SaraCura.Form1.resources
+C:\Users\Raphael Augusto\Documents\GitHub\GUI-TP-PM\SaraCura\SaraCura\obj\Debug\SaraCura.Properties.Resources.resources
+C:\Users\Raphael Augusto\Documents\GitHub\GUI-TP-PM\SaraCura\SaraCura\obj\Debug\SaraCura.csproj.GenerateResource.cache
+C:\Users\Raphael Augusto\Documents\GitHub\GUI-TP-PM\SaraCura\SaraCura\obj\Debug\SaraCura.csproj.CoreCompileInputs.cache
+C:\Users\Raphael Augusto\Documents\GitHub\GUI-TP-PM\SaraCura\SaraCura\obj\Debug\SaraCura.exe
+C:\Users\Raphael Augusto\Documents\GitHub\GUI-TP-PM\SaraCura\SaraCura\obj\Debug\SaraCura.pdb
+D:\otavi\Documents\Code\C#\SaraCura\SaraCura\bin\Debug\SaraCura.exe.config
+D:\otavi\Documents\Code\C#\SaraCura\SaraCura\bin\Debug\SaraCura.exe
+D:\otavi\Documents\Code\C#\SaraCura\SaraCura\bin\Debug\SaraCura.pdb
+D:\otavi\Documents\Code\C#\SaraCura\SaraCura\obj\Debug\SaraCura.Properties.Resources.resources
+D:\otavi\Documents\Code\C#\SaraCura\SaraCura\obj\Debug\SaraCura.csproj.GenerateResource.cache
+D:\otavi\Documents\Code\C#\SaraCura\SaraCura\obj\Debug\SaraCura.csproj.CoreCompileInputs.cache
+D:\otavi\Documents\Code\C#\SaraCura\SaraCura\obj\Debug\SaraCura.exe
+D:\otavi\Documents\Code\C#\SaraCura\SaraCura\obj\Debug\SaraCura.pdb
+D:\otavi\Documents\Code\C#\SaraCura\SaraCura\obj\Debug\SaraCura.FormMainPanel.resources
+D:\otavi\Documents\Code\C#\SaraCura\SaraCura\obj\Debug\SaraCura.csprojAssemblyReference.cache
+C:\Users\julia\Documents\SaraCura-master\SaraCura\bin\Debug\SaraCura.exe.config
+C:\Users\julia\Documents\SaraCura-master\SaraCura\obj\Debug\SaraCura.exe
+C:\Users\julia\Documents\SaraCura-master\SaraCura\obj\Debug\SaraCura.pdb
