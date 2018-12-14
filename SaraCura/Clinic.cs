@@ -117,17 +117,17 @@ namespace Clinica
             this.medico = medico;
             this.diaDaSemana = diaDaSemana;
             this.horario = horario;
-            if (!paciente.GetAtendimento)
-            {
-                if (pagamento == null)
-                {
-                    throw new ArgumentNullException("pagamento", "Forma de pagamento inválida!");
-                }
-                else
-                {
-                    this.pagamento = pagamento;
-                }
-            }
+            //if (!paciente.GetAtendimento)
+            //{
+            //    if (pagamento == null)
+            //    {
+            //        throw new ArgumentNullException("pagamento", "Forma de pagamento inválida!");
+            //    }
+            //    else
+            //    {
+            //        this.pagamento = pagamento;
+            //    }
+            //}
         }
 
         //TODO: gerar um método para agendar consulta, retirando da lista do médico o horário selecionado
@@ -136,15 +136,63 @@ namespace Clinica
     public class Paciente
     {
         private string nome;
-        private int idade;
-        private string sexo;
-        private double peso;
-        private double altura;
-        private bool atendimento;
-        public bool GetAtendimento => atendimento;
+        private string email;
+        private string telefone;
+        public Pagamento pagamento;
 
+        public Paciente (string nome, string email, string telefone, string matricula)
+        {
+            this.nome = nome;
+            this.email = email;
+            this.telefone = telefone;
+            this.pagamento = new Pagamento()
+            {
+                convenio = true,
+                matricula = matricula
+            };
+        }
 
-        //TODO: gerar um método adicionar paciente para ser usado no botão de ok do cadastro do paciente. Adicionar a lista Sessao.PacienteCadastrados
+        public Paciente (string nome, string email, string telefone, string tipoCartao, string nomeCartao, string numeroCartao, int cvv, string cpf)
+        {
+            this.nome = nome;
+            this.email = email;
+            this.telefone = telefone;
+            this.pagamento = new Pagamento()
+            {
+                convenio = false,
+                cartao = new Cartao()
+                {
+                    tipo = tipoCartao,
+                    nome = nomeCartao,
+                    numero = numeroCartao,
+                    cvv = cvv,
+                    cpf = cpf
+                }
+            };
+        }
+
+        public List<Paciente> AdicionarPaciente(List<Paciente> todosPacientes, Paciente paciente)
+        {
+            todosPacientes.Add(paciente);
+            return todosPacientes;
+        }
+
+    }
+
+    public class Pagamento
+    {
+        public bool convenio;
+        public string matricula;
+        public Cartao cartao;
+    }
+
+    public class Cartao
+    {
+        public string tipo;
+        public string nome;
+        public string numero;
+        public int cvv;
+        public string cpf;
     }
 
     public class Sessao

@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
+using Clinica;
 
 namespace SaraCura
 {
@@ -27,13 +28,17 @@ namespace SaraCura
 		public const int HT_CAPTION = 0x2;
 		private const int cGrip = 16;
 		private const int cCaption = 32;
-		public FormMainPanel()
+        private Sessao _sessao;
+
+		public FormMainPanel(Sessao sessao)
 		{
 			InitializeComponent();
 			SetStyle(ControlStyles.ResizeRedraw, true);
 			MainVisibility(true);
 			CadastroVisibility(false);
+            _sessao = sessao;
 		}
+
 		protected override void WndProc(ref Message m)
 		{
 			if (m.Msg == 0x84)
@@ -189,10 +194,12 @@ namespace SaraCura
 		{
 
 		}
+
 		private void BoxPagamentoConvenioVisibility(bool status)
 		{
 			labelCadastroConvenioNome.Visible = status;
 		}
+
 		private void checkBoxPagamentoConvenio_CheckedChanged(object sender, EventArgs e)
 		{
 			if (checkBoxPagamentoConvenio.Checked)
@@ -202,6 +209,7 @@ namespace SaraCura
 				CadastroConvenioVisibility(true);
 			}
 		}
+
 		private void checkBoxPagamentoParticular_CheckedChanged(object sender, EventArgs e)
 		{
 			if (checkBoxPagamentoParticular.Checked)
@@ -211,11 +219,12 @@ namespace SaraCura
 				CadastroConvenioVisibility(false);
 			}
 		}
+
 		private void labelCadastroConvenioAutorizacao_Click(object sender, EventArgs e)
 		{
 			MailAddress email;
-			string nome, convenio;
-			int telefone, matricula;
+            string nome, convenio;
+			long telefone, matricula;
 			nome = textBoxConsultasCadastroNome.Text;
 			if(!nome.All(char.IsLetter))
 			{
@@ -225,7 +234,7 @@ namespace SaraCura
 			}
 			try
 			{
-				telefone = int.Parse(maskedTextBoxCadastroTelefone.Text.Replace(" ", "").Replace("(", "").Replace(")", "").Replace("-", ""));
+				telefone = long.Parse(maskedTextBoxCadastroTelefone.Text.Replace(" ", "").Replace("(", "").Replace(")", "").Replace("-", ""));
 			}
 			catch
 			{
@@ -237,7 +246,7 @@ namespace SaraCura
 			convenio = textBoxCadastroNomeConvênio.Text;
 			try
 			{
-				matricula = int.Parse(textBoxConvenioMatriculacliente.Text);
+				matricula = long.Parse(textBoxConvenioMatriculacliente.Text);
 			}
 			catch
 			{
@@ -245,8 +254,22 @@ namespace SaraCura
 				textBoxConvenioMatriculacliente.Text = "";
 				return;
 			}
-		}
-		private void comboBoxPagamentos_SelectedIndexChanged(object sender, EventArgs e)
+            try
+            {
+                Paciente paciente = new Paciente(nome, email.ToString(), telefone.ToString(), matricula.ToString());
+                paciente.AdicionarPaciente(_sessao.PacientesCadastrados, paciente);
+            }
+            catch
+            {
+                MessageBox.Show("Algo deu errado, tente novamente mais tarde.");
+                return;
+            }
+
+            MessageBox.Show("Paciente cadastrado com sucesso.");
+            //otavio me ajuda a ir pra pagina inicial aqui
+        }
+
+        private void comboBoxPagamentos_SelectedIndexChanged(object sender, EventArgs e)
 		{
 			if (comboBoxPagamentos.SelectedItem.Equals("Crédito"))
 			{
