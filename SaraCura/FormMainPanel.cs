@@ -9,7 +9,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
-using Clinica;
+using System.Text.RegularExpressions;
+using Enums;
 
 namespace SaraCura
 {
@@ -28,17 +29,17 @@ namespace SaraCura
 		public const int HT_CAPTION = 0x2;
 		private const int cGrip = 16;
 		private const int cCaption = 32;
-        private Sessao _sessao;
-
-		public FormMainPanel(Sessao sessao)
+		public FormMainPanel()
 		{
 			InitializeComponent();
 			SetStyle(ControlStyles.ResizeRedraw, true);
 			MainVisibility(true);
 			CadastroVisibility(false);
-            _sessao = sessao;
+			foreach(var item in Enum.GetValues(typeof(Especialidades)))
+			{
+				checkedListBoxEquipamentoEspecialidades.Items.Add(item);
+			}
 		}
-
 		protected override void WndProc(ref Message m)
 		{
 			if (m.Msg == 0x84)
@@ -78,6 +79,7 @@ namespace SaraCura
 		private void label3_Click_1(object sender, EventArgs e)
 		{
 			pressButton(telaInicial);
+			panelMain.Visible = true;
 			CadastroVisibility(false);
 			MainVisibility(true);
 		}
@@ -91,7 +93,22 @@ namespace SaraCura
 			panelSelecaoCadastro.Visible = status;
 			labelCadastroMedico.Visible = status;
 			labelCadastroPaciente.Visible = status;
+			labelCadastroEquipamento.Visible = status;
 			CadastroPacienteVisibility(false);
+			CadastroEquipamentoVisibility(false);
+		}
+		private void CadastroEquipamentoVisibility(bool status)
+		{
+			panelCadastroEquipamento.Visible = status;
+			panelCadastroEquipamento.BringToFront();
+			labelTitulocadastroEquipamento.Visible = status;
+			labelCadastroEquipamentoID.Visible = status;
+			textBoxCadastroEquipamentoID.Visible = status;
+			textBoxCadastroEquipamentoTipo.Visible = status;
+			labelCadastroEquipamentoEspecialidades.Visible = status;
+			checkedListBoxEquipamentoEspecialidades.Visible = status;
+			checkedListBoxEquipamentoEspecialidades.CheckOnClick = true;
+			labelCadastroEquipamentoFinalizar.Visible = status;
 		}
 		private void CadastroPacienteVisibility(bool status)
 		{
@@ -148,7 +165,7 @@ namespace SaraCura
 		{
 			pressButton(sair);
 			var popup = MessageBox.Show("Tem certeza que deseja sair?", "Aviso", MessageBoxButtons.YesNo);
-			if (popup == DialogResult.Yes)
+			if (popup is DialogResult.Yes)
 			{
 				Application.Exit();
 			}
@@ -194,12 +211,10 @@ namespace SaraCura
 		{
 
 		}
-
 		private void BoxPagamentoConvenioVisibility(bool status)
 		{
 			labelCadastroConvenioNome.Visible = status;
 		}
-
 		private void checkBoxPagamentoConvenio_CheckedChanged(object sender, EventArgs e)
 		{
 			if (checkBoxPagamentoConvenio.Checked)
@@ -208,8 +223,11 @@ namespace SaraCura
 				CadastroParticularVisibility(false);
 				CadastroConvenioVisibility(true);
 			}
+			else
+			{
+				CadastroConvenioVisibility(false);
+			}
 		}
-
 		private void checkBoxPagamentoParticular_CheckedChanged(object sender, EventArgs e)
 		{
 			if (checkBoxPagamentoParticular.Checked)
@@ -218,35 +236,74 @@ namespace SaraCura
 				CadastroParticularVisibility(true);
 				CadastroConvenioVisibility(false);
 			}
+			else
+			{
+				CadastroParticularVisibility(false);
+			}
 		}
-
-		private void labelCadastroConvenioAutorizacao_Click(object sender, EventArgs e)
+		private void ClearCliente()
 		{
-			MailAddress email;
-            string nome, convenio;
-			long telefone, matricula;
+			textBoxConsultasCadastroNome.Text = "";
+			maskedTextBoxCadastroTelefone.Text = "";
+			textBoxCadastroEmail.Text = "";
+		}
+		private void ClearConvenio()
+		{
+			ClearCliente();
+			textBoxCadastroNomeConvênio.Text = "";
+			textBoxConvenioMatriculacliente.Text = "";
+		}
+		private bool RegistroCliente(ref MailAddress email, ref uint telefone, ref string nome)
+		{
 			nome = textBoxConsultasCadastroNome.Text;
-			if(!nome.All(char.IsLetter))
+			if (!nome.All(char.IsLetter) || nome is "")
 			{
 				MessageBox.Show("Nome inválido!");
 				textBoxConsultasCadastroNome.Text = "";
-				return;
+				return false;
 			}
 			try
 			{
-				telefone = long.Parse(maskedTextBoxCadastroTelefone.Text.Replace(" ", "").Replace("(", "").Replace(")", "").Replace("-", ""));
+				telefone = uint.Parse(Regex.Replace(maskedTextBoxCadastroTelefone.Text, "[ ()-]", ""));
 			}
 			catch
 			{
 				MessageBox.Show("Telefone Inválido!");
 				maskedTextBoxCadastroTelefone.Text = "";
-				return;
+				return false;
 			}
-			email = new MailAddress(textBoxCadastroEmail.Text);
-			convenio = textBoxCadastroNomeConvênio.Text;
 			try
 			{
-				matricula = long.Parse(textBoxConvenioMatriculacliente.Text);
+				email = new MailAddress(textBoxCadastroEmail.Text);
+			}
+			catch
+			{
+				MessageBox.Show("E-Mail Inválido!");
+				textBoxCadastroEmail.Text = "";
+				return false;
+			}
+			return true;
+		}
+		private void labelCadastroConvenioAutorizacao_Click(object sender, EventArgs e)
+		{
+			MailAddress email = null;
+			string nome = null, convenio;
+			uint telefone = 0, matricula;
+			if (RegistroCliente(ref email, ref telefone, ref nome))
+			{
+				
+			}
+			else return;
+			convenio = textBoxCadastroNomeConvênio.Text;
+			if (!convenio.All(char.IsLetter) || convenio is "")
+			{
+				MessageBox.Show("Nome do convênio inválido!");
+				textBoxCadastroNomeConvênio.Text = "";
+				return;
+			}
+			try
+			{
+				matricula = uint.Parse(textBoxConvenioMatriculacliente.Text);
 			}
 			catch
 			{
@@ -254,129 +311,156 @@ namespace SaraCura
 				textBoxConvenioMatriculacliente.Text = "";
 				return;
 			}
-            try
-            {
-                Paciente paciente = new Paciente(nome, email.ToString(), telefone.ToString(), matricula.ToString());
-                paciente.AdicionarPaciente(_sessao.PacientesCadastrados, paciente);
-            }
-            catch(Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-                return;
-            }
-
-            MessageBox.Show("Paciente cadastrado com sucesso.");
-            //otavio me ajuda a ir pra pagina inicial aqui
-        }
-
-        private void comboBoxPagamentos_SelectedIndexChanged(object sender, EventArgs e)
+			MessageBox.Show("Cliente cadastrado com sucesso!");
+			ClearConvenio();
+		}
+		private bool RegistroCartao(ref string nome, ref uint num, ref uint cpf, ref short codigo)
 		{
-			if (comboBoxPagamentos.SelectedItem.Equals("Crédito"))
+			nome = textBoxCadastroParticularCartaoNome.Text;
+			if(nome.All(char.IsLetter) || nome is "")
+			{
+				MessageBox.Show("Nome do cliente registrado no cartão inválido!");
+				textBoxCadastroParticularCartaoNome.Text = "";
+				return false;
+			}
+			try
+			{
+				num = uint.Parse(Regex.Replace(maskedTextBoxCadastroParticularCartaoNumero.Text, "[-]", ""));
+			}
+			catch
+			{
+				MessageBox.Show("Número do cartão inválido!");
+				maskedTextBoxCadastroParticularCartaoNumero.Text = "";
+				return false;
+			}
+			try
+			{
+				cpf = uint.Parse(Regex.Replace(maskedTextBoxCadastroParticularCartaoCPF.Text, "[.-]", ""));
+			}
+			catch
+			{
+				MessageBox.Show("CPF inválido!");
+				maskedTextBoxCadastroParticularCartaoCPF.Text = "";
+				return false;
+			}
+			try
+			{
+				codigo = short.Parse(maskedTextBoxCadastroParticularCartaoCodigo.Text);
+			}
+			catch
+			{
+				MessageBox.Show("Código do cartão inválido!");
+				maskedTextBoxCadastroParticularCartaoCodigo.Text = "";
+				return false;
+			}
+			return true;
+		}
+		private void comboBoxPagamentos_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			MailAddress email = null;
+			string nome = null, nomeCartao = null;
+			uint telefone = 0, cpf = 0, num = 0;
+			ushort codigo = 0;
+			if (comboBoxPagamentos.SelectedItem is "Crédito")
 			{
 				CadastroParticularCartaoVisibility(true);
 			}
-			else if(comboBoxPagamentos.SelectedItem.Equals("Cheque"))
+			else if(comboBoxPagamentos.SelectedItem is "Cheque")
 			{
 				CadastroParticularCartaoVisibility(false);
-				var confirm = MessageBox.Show("Confirmar Pagamento em cheque:", "Aviso", MessageBoxButtons.OKCancel);
+				var confirm = MessageBox.Show("Confirmar Pagamento em cheque", "Aviso", MessageBoxButtons.OKCancel);
+				if(confirm is DialogResult.OK)
+				{
+					if (RegistroCliente(ref email, ref telefone, ref nome))
+					{
+						MessageBox.Show("Cliente cadastrado com sucesso!");
+					}
+				}
 			}
-			else if(comboBoxPagamentos.SelectedItem.Equals("Débito"))
+			else if(comboBoxPagamentos.SelectedItem is "Débito")
 			{
 				CadastroParticularCartaoVisibility(true);
 			}
 			else
 			{
 				CadastroParticularCartaoVisibility(false);
-				var confirm = MessageBox.Show("Confirmar pagamento em dinheiro:", "Aviso", MessageBoxButtons.OKCancel);
+				var confirm = MessageBox.Show("Confirmar pagamento em dinheiro", "Aviso", MessageBoxButtons.OKCancel);
+				if (confirm is DialogResult.OK)
+				{
+					if(RegistroCliente(ref email, ref telefone, ref nome))
+					{
+						MessageBox.Show("Cliente cadastrado com sucesso!");
+					}
+				}
 			}
 		}
-
-		private void labelCadastroParticularChequeDinheiroFinalizar_Click(object sender, EventArgs e)
-		{
-
-		}
-
-        private void labelCadastroParticularCartaoFinalizar_Click(object sender, EventArgs e)
-        {
-            MailAddress email;
-            string nome, tipoCartao, nomeCartao;
-            int cvv;
-            long telefone, cpf, numeroCartao;
-            nome = textBoxConsultasCadastroNome.Text;
-            if (!nome.All(char.IsLetter))
-            {
-                MessageBox.Show("Nome inválido!");
-                textBoxConsultasCadastroNome.Text = "";
-                return;
-            }
-            try
-            {
-                telefone = long.Parse(maskedTextBoxCadastroTelefone.Text.Replace(" ", "").Replace("(", "").Replace(")", "").Replace("-", ""));
-            }
-            catch
-            {
-                MessageBox.Show("Telefone Inválido!");
-                maskedTextBoxCadastroTelefone.Text = "";
-                return;
-            }
-            email = new MailAddress(textBoxCadastroEmail.Text);
-            tipoCartao = comboBoxPagamentos.SelectedItem.ToString();
-            nomeCartao = textBoxCadastroParticularCartaoNome.Text;
-            if (!nomeCartao.All(char.IsLetter))
-            {
-                MessageBox.Show("Nome do cartão inválido!");
-                textBoxCadastroParticularCartaoNome.Text = "";
-                return;
-            }
-            try
-            {
-                cpf = long.Parse(labelCadastroParticularCartaoCPF.Text.Replace(".", "").Replace("-", ""));
-            }
-            catch
-            {
-                MessageBox.Show("CPF Inválido!");
-                labelCadastroParticularCartaoCPF.Text = "";
-                return;
-            }
-            try
-            {
-                numeroCartao = long.Parse(maskedTextBoxCadastroParticularCartaoNumero.Text.Replace("-", ""));
-            }
-            catch
-            {
-                MessageBox.Show("Número do cartão inválido!");
-                maskedTextBoxCadastroParticularCartaoNumero.Text = "";
-                return;
-            }
-            try
-            {
-                cvv = int.Parse(maskedTextBoxCadastroParticularCartaoCodigo.Text);
-            }
-            catch
-            {
-                MessageBox.Show("Código de segurança Inválido!");
-                maskedTextBoxCadastroParticularCartaoCodigo.Text = "";
-                return;
-            }
-            try
-            {
-                Paciente paciente = new Paciente(nome, email.ToString(), telefone.ToString(), tipoCartao, nomeCartao, numeroCartao.ToString(), cvv, cpf.ToString());
-                paciente.AdicionarPaciente(_sessao.PacientesCadastrados, paciente);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-                return;
-            }
-
-            MessageBox.Show("Paciente cadastrado com sucesso.");
-            //otavio me ajuda a ir pra pagina inicial aqui
-        }
-
-        private void labelCadastroPaciente_Click(object sender, EventArgs e)
+		private void labelCadastroPaciente_Click(object sender, EventArgs e)
 		{
 			CadastroVisibility(false);
 			CadastroPacienteVisibility(true);
+		}
+		private void ClearCartao()
+		{
+			maskedTextBoxCadastroParticularCartaoCodigo.Text = "";
+			maskedTextBoxCadastroParticularCartaoCPF.Text = "";
+			maskedTextBoxCadastroParticularCartaoNumero.Text = "";
+			textBoxCadastroParticularCartaoNome.Text = "";
+		}
+		private void labelCadastroParticularCartaofinalizar_Click(object sender, EventArgs e)
+		{
+			MailAddress mail = null;
+			short codigo = 0;
+			string nome = null, nomeCartao = null;
+			uint telefone = 0, num = 0, cpf = 0;
+			if(RegistroCliente(ref mail, ref telefone, ref nome) && RegistroCartao(ref nomeCartao, ref num, ref cpf, ref codigo))
+			{
+				MessageBox.Show("Cliente Cadastrado com sucesso!");
+				ClearCliente();
+				ClearCartao();
+			}
+		}
+		private void labelCadastroEquipamento_Click(object sender, EventArgs e)
+		{
+			CadastroVisibility(false);
+			CadastroEquipamentoVisibility(true);
+		}
+
+		private void labelCadastroEquipamentoFinalizar_Click(object sender, EventArgs e)
+		{
+			string tipo;
+			uint id;
+			tipo = textBoxCadastroEquipamentoTipo.Text;
+			if(tipo is "" || !tipo.All(char.IsLetter))
+			{
+				MessageBox.Show("Tipo inválido!");
+				textBoxCadastroEquipamentoTipo.Text = "";
+				return;
+			}
+			try
+			{
+				id = uint.Parse(textBoxCadastroEquipamentoID.Text);
+			}
+			catch
+			{
+				MessageBox.Show("ID inválido!");
+				textBoxCadastroEquipamentoID.Text = "";
+				return;
+			}
+			if(checkedListBoxEquipamentoEspecialidades.CheckedItems.Count is 0)
+			{
+				MessageBox.Show("Selecione pelo menos uma especialidade");
+				return;
+			}
+			else
+			{
+				var lista_especialidades = checkedListBoxEquipamentoEspecialidades.SelectedItems;
+			}
+			MessageBox.Show("Equipamento cadastrado com sucesso!");
+		}
+
+		private void labelCadastroMedico_Click(object sender, EventArgs e)
+		{
+
 		}
 	}
 }
