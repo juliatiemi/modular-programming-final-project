@@ -296,7 +296,84 @@ namespace SaraCura
 
 		}
 
-		private void labelCadastroPaciente_Click(object sender, EventArgs e)
+        private void labelCadastroParticularCartaoFinalizar_Click(object sender, EventArgs e)
+        {
+            MailAddress email;
+            string nome, tipoCartao, nomeCartao;
+            int cvv;
+            long telefone, cpf, numeroCartao;
+            nome = textBoxConsultasCadastroNome.Text;
+            if (!nome.All(char.IsLetter))
+            {
+                MessageBox.Show("Nome inválido!");
+                textBoxConsultasCadastroNome.Text = "";
+                return;
+            }
+            try
+            {
+                telefone = long.Parse(maskedTextBoxCadastroTelefone.Text.Replace(" ", "").Replace("(", "").Replace(")", "").Replace("-", ""));
+            }
+            catch
+            {
+                MessageBox.Show("Telefone Inválido!");
+                maskedTextBoxCadastroTelefone.Text = "";
+                return;
+            }
+            email = new MailAddress(textBoxCadastroEmail.Text);
+            tipoCartao = comboBoxPagamentos.SelectedItem.ToString();
+            nomeCartao = textBoxCadastroParticularCartaoNome.Text;
+            if (!nomeCartao.All(char.IsLetter))
+            {
+                MessageBox.Show("Nome do cartão inválido!");
+                textBoxCadastroParticularCartaoNome.Text = "";
+                return;
+            }
+            try
+            {
+                cpf = long.Parse(labelCadastroParticularCartaoCPF.Text.Replace(".", "").Replace("-", ""));
+            }
+            catch
+            {
+                MessageBox.Show("CPF Inválido!");
+                labelCadastroParticularCartaoCPF.Text = "";
+                return;
+            }
+            try
+            {
+                numeroCartao = long.Parse(maskedTextBoxCadastroParticularCartaoNumero.Text.Replace("-", ""));
+            }
+            catch
+            {
+                MessageBox.Show("Número do cartão inválido!");
+                maskedTextBoxCadastroParticularCartaoNumero.Text = "";
+                return;
+            }
+            try
+            {
+                cvv = int.Parse(maskedTextBoxCadastroParticularCartaoCodigo.Text);
+            }
+            catch
+            {
+                MessageBox.Show("Código de segurança Inválido!");
+                maskedTextBoxCadastroParticularCartaoCodigo.Text = "";
+                return;
+            }
+            try
+            {
+                Paciente paciente = new Paciente(nome, email.ToString(), telefone.ToString(), tipoCartao, nomeCartao, numeroCartao.ToString(), cvv, cpf.ToString());
+                paciente.AdicionarPaciente(_sessao.PacientesCadastrados, paciente);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return;
+            }
+
+            MessageBox.Show("Paciente cadastrado com sucesso.");
+            //otavio me ajuda a ir pra pagina inicial aqui
+        }
+
+        private void labelCadastroPaciente_Click(object sender, EventArgs e)
 		{
 			CadastroVisibility(false);
 			CadastroPacienteVisibility(true);

@@ -333,6 +333,8 @@
             this.labelCadastroParticularCartaofinalizar.TabIndex = 5;
             this.labelCadastroParticularCartaofinalizar.Text = "Finalizar";
             this.labelCadastroParticularCartaofinalizar.Visible = false;
+            this.labelCadastroParticularCartaofinalizar.Click += new System.EventHandler(this.labelCadastroParticularCartaoFinalizar_Click);
+
             // 
             // maskedTextBoxCadastroParticularCartaoCPF
             // 
