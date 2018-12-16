@@ -259,9 +259,9 @@ namespace SaraCura
                 Paciente paciente = new Paciente(nome, email.ToString(), telefone.ToString(), matricula.ToString());
                 paciente.AdicionarPaciente(_sessao.PacientesCadastrados, paciente);
             }
-            catch
+            catch(Exception ex)
             {
-                MessageBox.Show("Algo deu errado, tente novamente mais tarde.");
+                MessageBox.Show(ex.Message);
                 return;
             }
 

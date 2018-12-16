@@ -135,6 +135,7 @@ namespace Clinica
 
     public class Paciente
     {
+        private int contador = 0;
         private string nome;
         private string email;
         private string telefone;
@@ -150,6 +151,7 @@ namespace Clinica
                 convenio = true,
                 matricula = matricula
             };
+            this.contador++;
         }
 
         public Paciente (string nome, string email, string telefone, string tipoCartao, string nomeCartao, string numeroCartao, int cvv, string cpf)
@@ -169,12 +171,23 @@ namespace Clinica
                     cpf = cpf
                 }
             };
+            if(this.contador >= 12)
+            {
+                this.contador = 0;
+            }
         }
 
         public List<Paciente> AdicionarPaciente(List<Paciente> todosPacientes, Paciente paciente)
         {
-            todosPacientes.Add(paciente);
-            return todosPacientes;
+            if(contador != 12)
+            {
+                todosPacientes.Add(paciente);
+                return todosPacientes;
+            }
+            else
+            {
+                throw new Exception("Erro: solicitação não autorizada.");
+            }
         }
 
     }
