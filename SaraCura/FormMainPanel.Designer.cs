@@ -89,6 +89,22 @@
 			this.labelCadastroMedico = new System.Windows.Forms.Label();
 			this.label2 = new System.Windows.Forms.Label();
 			this.labelCadastroEquipamentoFinalizar = new System.Windows.Forms.Label();
+			this.panelCadastroMedico = new System.Windows.Forms.Panel();
+			this.labelCadastroMedicoTitulo = new System.Windows.Forms.Label();
+			this.labelCadastroMedicoNome = new System.Windows.Forms.Label();
+			this.labelCadastroMedicoID = new System.Windows.Forms.Label();
+			this.labelCadastroMedicoSexo = new System.Windows.Forms.Label();
+			this.textBoxCadastroMedicoNome = new System.Windows.Forms.TextBox();
+			this.maskedTextBoxCadastroMedicoID = new System.Windows.Forms.MaskedTextBox();
+			this.checkBoxCadastroMedicoMasculino = new System.Windows.Forms.CheckBox();
+			this.checkBoxCadastroMedicoFeminino = new System.Windows.Forms.CheckBox();
+			this.labelCadastroMedicoEspecialidades = new System.Windows.Forms.Label();
+			this.checkedListBoxCadastroMedicoEspecialidades = new System.Windows.Forms.CheckedListBox();
+			this.checkedListBoxCadastroMedicoDias = new System.Windows.Forms.CheckedListBox();
+			this.labelCadastroMedicoDias = new System.Windows.Forms.Label();
+			this.labelCadastroMedicoHorario = new System.Windows.Forms.Label();
+			this.numericUpDownCadastroMedicoHorario = new System.Windows.Forms.NumericUpDown();
+			this.labelCaastroMedicoFinalizar = new System.Windows.Forms.Label();
 			this.panelBarraSuperior.SuspendLayout();
 			this.panelLateral.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBoxImagem)).BeginInit();
@@ -99,6 +115,8 @@
 			this.panelCadastroConvenio.SuspendLayout();
 			this.panelSelecaoCadastro.SuspendLayout();
 			this.panelCadastroEquipamento.SuspendLayout();
+			this.panelCadastroMedico.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.numericUpDownCadastroMedicoHorario)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// labelSair_X
@@ -774,11 +792,210 @@
 			this.labelCadastroEquipamentoFinalizar.Text = "Finalizar";
 			this.labelCadastroEquipamentoFinalizar.Click += new System.EventHandler(this.labelCadastroEquipamentoFinalizar_Click);
 			// 
+			// panelCadastroMedico
+			// 
+			this.panelCadastroMedico.Controls.Add(this.labelCaastroMedicoFinalizar);
+			this.panelCadastroMedico.Controls.Add(this.numericUpDownCadastroMedicoHorario);
+			this.panelCadastroMedico.Controls.Add(this.labelCadastroMedicoHorario);
+			this.panelCadastroMedico.Controls.Add(this.labelCadastroMedicoDias);
+			this.panelCadastroMedico.Controls.Add(this.checkedListBoxCadastroMedicoDias);
+			this.panelCadastroMedico.Controls.Add(this.checkedListBoxCadastroMedicoEspecialidades);
+			this.panelCadastroMedico.Controls.Add(this.labelCadastroMedicoEspecialidades);
+			this.panelCadastroMedico.Controls.Add(this.checkBoxCadastroMedicoFeminino);
+			this.panelCadastroMedico.Controls.Add(this.checkBoxCadastroMedicoMasculino);
+			this.panelCadastroMedico.Controls.Add(this.maskedTextBoxCadastroMedicoID);
+			this.panelCadastroMedico.Controls.Add(this.textBoxCadastroMedicoNome);
+			this.panelCadastroMedico.Controls.Add(this.labelCadastroMedicoSexo);
+			this.panelCadastroMedico.Controls.Add(this.labelCadastroMedicoID);
+			this.panelCadastroMedico.Controls.Add(this.labelCadastroMedicoNome);
+			this.panelCadastroMedico.Controls.Add(this.labelCadastroMedicoTitulo);
+			this.panelCadastroMedico.Location = new System.Drawing.Point(186, 29);
+			this.panelCadastroMedico.Name = "panelCadastroMedico";
+			this.panelCadastroMedico.Size = new System.Drawing.Size(602, 559);
+			this.panelCadastroMedico.TabIndex = 8;
+			// 
+			// labelCadastroMedicoTitulo
+			// 
+			this.labelCadastroMedicoTitulo.AutoSize = true;
+			this.labelCadastroMedicoTitulo.Font = new System.Drawing.Font("Yu Gothic Medium", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.labelCadastroMedicoTitulo.ForeColor = System.Drawing.Color.Teal;
+			this.labelCadastroMedicoTitulo.Location = new System.Drawing.Point(15, 17);
+			this.labelCadastroMedicoTitulo.Name = "labelCadastroMedicoTitulo";
+			this.labelCadastroMedicoTitulo.Size = new System.Drawing.Size(255, 31);
+			this.labelCadastroMedicoTitulo.TabIndex = 0;
+			this.labelCadastroMedicoTitulo.Text = "Cadastro Do Médico";
+			// 
+			// labelCadastroMedicoNome
+			// 
+			this.labelCadastroMedicoNome.AutoSize = true;
+			this.labelCadastroMedicoNome.Font = new System.Drawing.Font("Yu Gothic Medium", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.labelCadastroMedicoNome.ForeColor = System.Drawing.Color.Teal;
+			this.labelCadastroMedicoNome.Location = new System.Drawing.Point(37, 67);
+			this.labelCadastroMedicoNome.Name = "labelCadastroMedicoNome";
+			this.labelCadastroMedicoNome.Size = new System.Drawing.Size(81, 27);
+			this.labelCadastroMedicoNome.TabIndex = 1;
+			this.labelCadastroMedicoNome.Text = "Nome:";
+			// 
+			// labelCadastroMedicoID
+			// 
+			this.labelCadastroMedicoID.AutoSize = true;
+			this.labelCadastroMedicoID.Font = new System.Drawing.Font("Yu Gothic Medium", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.labelCadastroMedicoID.ForeColor = System.Drawing.Color.Teal;
+			this.labelCadastroMedicoID.Location = new System.Drawing.Point(37, 120);
+			this.labelCadastroMedicoID.Name = "labelCadastroMedicoID";
+			this.labelCadastroMedicoID.Size = new System.Drawing.Size(69, 27);
+			this.labelCadastroMedicoID.TabIndex = 2;
+			this.labelCadastroMedicoID.Text = "CRM:";
+			// 
+			// labelCadastroMedicoSexo
+			// 
+			this.labelCadastroMedicoSexo.AutoSize = true;
+			this.labelCadastroMedicoSexo.Font = new System.Drawing.Font("Yu Gothic Medium", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.labelCadastroMedicoSexo.ForeColor = System.Drawing.Color.Teal;
+			this.labelCadastroMedicoSexo.Location = new System.Drawing.Point(37, 163);
+			this.labelCadastroMedicoSexo.Name = "labelCadastroMedicoSexo";
+			this.labelCadastroMedicoSexo.Size = new System.Drawing.Size(70, 27);
+			this.labelCadastroMedicoSexo.TabIndex = 3;
+			this.labelCadastroMedicoSexo.Text = "Sexo:";
+			// 
+			// textBoxCadastroMedicoNome
+			// 
+			this.textBoxCadastroMedicoNome.Location = new System.Drawing.Point(124, 75);
+			this.textBoxCadastroMedicoNome.Name = "textBoxCadastroMedicoNome";
+			this.textBoxCadastroMedicoNome.Size = new System.Drawing.Size(421, 20);
+			this.textBoxCadastroMedicoNome.TabIndex = 4;
+			// 
+			// maskedTextBoxCadastroMedicoID
+			// 
+			this.maskedTextBoxCadastroMedicoID.Location = new System.Drawing.Point(112, 127);
+			this.maskedTextBoxCadastroMedicoID.Mask = "0000000";
+			this.maskedTextBoxCadastroMedicoID.Name = "maskedTextBoxCadastroMedicoID";
+			this.maskedTextBoxCadastroMedicoID.Size = new System.Drawing.Size(432, 20);
+			this.maskedTextBoxCadastroMedicoID.TabIndex = 5;
+			// 
+			// checkBoxCadastroMedicoMasculino
+			// 
+			this.checkBoxCadastroMedicoMasculino.AutoSize = true;
+			this.checkBoxCadastroMedicoMasculino.Font = new System.Drawing.Font("Yu Gothic Medium", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.checkBoxCadastroMedicoMasculino.ForeColor = System.Drawing.Color.Teal;
+			this.checkBoxCadastroMedicoMasculino.Location = new System.Drawing.Point(147, 164);
+			this.checkBoxCadastroMedicoMasculino.Name = "checkBoxCadastroMedicoMasculino";
+			this.checkBoxCadastroMedicoMasculino.Size = new System.Drawing.Size(131, 29);
+			this.checkBoxCadastroMedicoMasculino.TabIndex = 6;
+			this.checkBoxCadastroMedicoMasculino.Text = "Masculino";
+			this.checkBoxCadastroMedicoMasculino.UseVisualStyleBackColor = true;
+			this.checkBoxCadastroMedicoMasculino.CheckedChanged += new System.EventHandler(this.checkBoxCadastroMedicoMasculino_CheckedChanged);
+			// 
+			// checkBoxCadastroMedicoFeminino
+			// 
+			this.checkBoxCadastroMedicoFeminino.AutoSize = true;
+			this.checkBoxCadastroMedicoFeminino.Font = new System.Drawing.Font("Yu Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.checkBoxCadastroMedicoFeminino.ForeColor = System.Drawing.Color.Teal;
+			this.checkBoxCadastroMedicoFeminino.Location = new System.Drawing.Point(311, 166);
+			this.checkBoxCadastroMedicoFeminino.Name = "checkBoxCadastroMedicoFeminino";
+			this.checkBoxCadastroMedicoFeminino.Size = new System.Drawing.Size(115, 29);
+			this.checkBoxCadastroMedicoFeminino.TabIndex = 7;
+			this.checkBoxCadastroMedicoFeminino.Text = "Feminino";
+			this.checkBoxCadastroMedicoFeminino.UseVisualStyleBackColor = true;
+			this.checkBoxCadastroMedicoFeminino.CheckedChanged += new System.EventHandler(this.checkBoxCadastroMedicoFeminino_CheckedChanged);
+			// 
+			// labelCadastroMedicoEspecialidades
+			// 
+			this.labelCadastroMedicoEspecialidades.AutoSize = true;
+			this.labelCadastroMedicoEspecialidades.Font = new System.Drawing.Font("Yu Gothic Medium", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.labelCadastroMedicoEspecialidades.ForeColor = System.Drawing.Color.Teal;
+			this.labelCadastroMedicoEspecialidades.Location = new System.Drawing.Point(16, 207);
+			this.labelCadastroMedicoEspecialidades.Name = "labelCadastroMedicoEspecialidades";
+			this.labelCadastroMedicoEspecialidades.Size = new System.Drawing.Size(181, 27);
+			this.labelCadastroMedicoEspecialidades.TabIndex = 8;
+			this.labelCadastroMedicoEspecialidades.Text = "Especialidades:";
+			// 
+			// checkedListBoxCadastroMedicoEspecialidades
+			// 
+			this.checkedListBoxCadastroMedicoEspecialidades.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+			this.checkedListBoxCadastroMedicoEspecialidades.CheckOnClick = true;
+			this.checkedListBoxCadastroMedicoEspecialidades.Font = new System.Drawing.Font("Yu Gothic Medium", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.checkedListBoxCadastroMedicoEspecialidades.ForeColor = System.Drawing.Color.Teal;
+			this.checkedListBoxCadastroMedicoEspecialidades.FormattingEnabled = true;
+			this.checkedListBoxCadastroMedicoEspecialidades.Location = new System.Drawing.Point(33, 255);
+			this.checkedListBoxCadastroMedicoEspecialidades.Name = "checkedListBoxCadastroMedicoEspecialidades";
+			this.checkedListBoxCadastroMedicoEspecialidades.Size = new System.Drawing.Size(245, 136);
+			this.checkedListBoxCadastroMedicoEspecialidades.TabIndex = 9;
+			// 
+			// checkedListBoxCadastroMedicoDias
+			// 
+			this.checkedListBoxCadastroMedicoDias.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+			this.checkedListBoxCadastroMedicoDias.Font = new System.Drawing.Font("Yu Gothic Medium", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.checkedListBoxCadastroMedicoDias.ForeColor = System.Drawing.Color.Teal;
+			this.checkedListBoxCadastroMedicoDias.FormattingEnabled = true;
+			this.checkedListBoxCadastroMedicoDias.Location = new System.Drawing.Point(311, 255);
+			this.checkedListBoxCadastroMedicoDias.Name = "checkedListBoxCadastroMedicoDias";
+			this.checkedListBoxCadastroMedicoDias.Size = new System.Drawing.Size(272, 136);
+			this.checkedListBoxCadastroMedicoDias.TabIndex = 10;
+			// 
+			// labelCadastroMedicoDias
+			// 
+			this.labelCadastroMedicoDias.AutoSize = true;
+			this.labelCadastroMedicoDias.Font = new System.Drawing.Font("Yu Gothic Medium", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.labelCadastroMedicoDias.ForeColor = System.Drawing.Color.Teal;
+			this.labelCadastroMedicoDias.Location = new System.Drawing.Point(293, 210);
+			this.labelCadastroMedicoDias.Name = "labelCadastroMedicoDias";
+			this.labelCadastroMedicoDias.Size = new System.Drawing.Size(186, 25);
+			this.labelCadastroMedicoDias.TabIndex = 11;
+			this.labelCadastroMedicoDias.Text = "Dias De Trabalho:";
+			// 
+			// labelCadastroMedicoHorario
+			// 
+			this.labelCadastroMedicoHorario.AutoSize = true;
+			this.labelCadastroMedicoHorario.Font = new System.Drawing.Font("Yu Gothic Medium", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.labelCadastroMedicoHorario.ForeColor = System.Drawing.Color.Teal;
+			this.labelCadastroMedicoHorario.Location = new System.Drawing.Point(16, 416);
+			this.labelCadastroMedicoHorario.Name = "labelCadastroMedicoHorario";
+			this.labelCadastroMedicoHorario.Size = new System.Drawing.Size(184, 25);
+			this.labelCadastroMedicoHorario.TabIndex = 12;
+			this.labelCadastroMedicoHorario.Text = "Horário De Início:";
+			// 
+			// numericUpDownCadastroMedicoHorario
+			// 
+			this.numericUpDownCadastroMedicoHorario.Location = new System.Drawing.Point(206, 422);
+			this.numericUpDownCadastroMedicoHorario.Maximum = new decimal(new int[] {
+            14,
+            0,
+            0,
+            0});
+			this.numericUpDownCadastroMedicoHorario.Minimum = new decimal(new int[] {
+            7,
+            0,
+            0,
+            0});
+			this.numericUpDownCadastroMedicoHorario.Name = "numericUpDownCadastroMedicoHorario";
+			this.numericUpDownCadastroMedicoHorario.Size = new System.Drawing.Size(120, 20);
+			this.numericUpDownCadastroMedicoHorario.TabIndex = 13;
+			this.numericUpDownCadastroMedicoHorario.Value = new decimal(new int[] {
+            14,
+            0,
+            0,
+            0});
+			// 
+			// labelCaastroMedicoFinalizar
+			// 
+			this.labelCaastroMedicoFinalizar.AutoSize = true;
+			this.labelCaastroMedicoFinalizar.BackColor = System.Drawing.Color.Teal;
+			this.labelCaastroMedicoFinalizar.Font = new System.Drawing.Font("Yu Gothic", 18F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.labelCaastroMedicoFinalizar.ForeColor = System.Drawing.Color.White;
+			this.labelCaastroMedicoFinalizar.Location = new System.Drawing.Point(476, 515);
+			this.labelCaastroMedicoFinalizar.Name = "labelCaastroMedicoFinalizar";
+			this.labelCaastroMedicoFinalizar.Size = new System.Drawing.Size(114, 31);
+			this.labelCaastroMedicoFinalizar.TabIndex = 14;
+			this.labelCaastroMedicoFinalizar.Text = "Finalizar";
+			this.labelCaastroMedicoFinalizar.Click += new System.EventHandler(this.labelCaastroMedicoFinalizar_Click);
+			// 
 			// FormMainPanel
 			// 
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
 			this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(223)))), ((int)(((byte)(239)))), ((int)(((byte)(249)))));
 			this.ClientSize = new System.Drawing.Size(800, 600);
+			this.Controls.Add(this.panelCadastroMedico);
 			this.Controls.Add(this.panelCadastroEquipamento);
 			this.Controls.Add(this.panelSelecaoCadastro);
 			this.Controls.Add(this.panelMain);
@@ -807,6 +1024,9 @@
 			this.panelSelecaoCadastro.PerformLayout();
 			this.panelCadastroEquipamento.ResumeLayout(false);
 			this.panelCadastroEquipamento.PerformLayout();
+			this.panelCadastroMedico.ResumeLayout(false);
+			this.panelCadastroMedico.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.numericUpDownCadastroMedicoHorario)).EndInit();
 			this.ResumeLayout(false);
 
         }
@@ -872,6 +1092,22 @@
 		private System.Windows.Forms.Label labelCadastroEquipamentoEspecialidades;
 		private System.Windows.Forms.CheckedListBox checkedListBoxEquipamentoEspecialidades;
 		private System.Windows.Forms.Label labelCadastroEquipamentoFinalizar;
+		private System.Windows.Forms.Panel panelCadastroMedico;
+		private System.Windows.Forms.Label labelCadastroMedicoTitulo;
+		private System.Windows.Forms.Label labelCadastroMedicoSexo;
+		private System.Windows.Forms.Label labelCadastroMedicoID;
+		private System.Windows.Forms.Label labelCadastroMedicoNome;
+		private System.Windows.Forms.CheckBox checkBoxCadastroMedicoFeminino;
+		private System.Windows.Forms.CheckBox checkBoxCadastroMedicoMasculino;
+		private System.Windows.Forms.MaskedTextBox maskedTextBoxCadastroMedicoID;
+		private System.Windows.Forms.TextBox textBoxCadastroMedicoNome;
+		private System.Windows.Forms.CheckedListBox checkedListBoxCadastroMedicoEspecialidades;
+		private System.Windows.Forms.Label labelCadastroMedicoEspecialidades;
+		private System.Windows.Forms.Label labelCadastroMedicoDias;
+		private System.Windows.Forms.CheckedListBox checkedListBoxCadastroMedicoDias;
+		private System.Windows.Forms.Label labelCadastroMedicoHorario;
+		private System.Windows.Forms.NumericUpDown numericUpDownCadastroMedicoHorario;
+		private System.Windows.Forms.Label labelCaastroMedicoFinalizar;
 	}
 }
 

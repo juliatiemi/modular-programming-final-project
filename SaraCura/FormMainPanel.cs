@@ -33,12 +33,20 @@ namespace SaraCura
 		{
 			InitializeComponent();
 			SetStyle(ControlStyles.ResizeRedraw, true);
+			Parallel.Invoke(() =>
+			{
+				foreach (var item in Enum.GetValues(typeof(Especialidades)))
+				{
+					checkedListBoxEquipamentoEspecialidades.Items.Add(item);
+					checkedListBoxCadastroMedicoEspecialidades.Items.Add(item);
+				}
+				foreach (var item in Enum.GetValues(typeof(DiasDaSemana)))
+				{
+					checkedListBoxCadastroMedicoDias.Items.Add(item);
+				}
+			});
 			MainVisibility(true);
 			CadastroVisibility(false);
-			foreach(var item in Enum.GetValues(typeof(Especialidades)))
-			{
-				checkedListBoxEquipamentoEspecialidades.Items.Add(item);
-			}
 		}
 		protected override void WndProc(ref Message m)
 		{
@@ -96,11 +104,11 @@ namespace SaraCura
 			labelCadastroEquipamento.Visible = status;
 			CadastroPacienteVisibility(false);
 			CadastroEquipamentoVisibility(false);
+			CadastroMedicoVisibility(false);
 		}
 		private void CadastroEquipamentoVisibility(bool status)
 		{
 			panelCadastroEquipamento.Visible = status;
-			panelCadastroEquipamento.BringToFront();
 			labelTitulocadastroEquipamento.Visible = status;
 			labelCadastroEquipamentoID.Visible = status;
 			textBoxCadastroEquipamentoID.Visible = status;
@@ -109,6 +117,24 @@ namespace SaraCura
 			checkedListBoxEquipamentoEspecialidades.Visible = status;
 			checkedListBoxEquipamentoEspecialidades.CheckOnClick = true;
 			labelCadastroEquipamentoFinalizar.Visible = status;
+		}
+		private void CadastroMedicoVisibility(bool status)
+		{
+			panelCadastroMedico.Visible = status;
+			labelCadastroMedicoTitulo.Visible = status;
+			labelCadastroMedicoID.Visible = status;
+			labelCadastroMedicoNome.Visible = status;
+			labelCadastroMedicoSexo.Visible = status;
+			textBoxCadastroMedicoNome.Visible = status;
+			checkBoxCadastroMedicoFeminino.Visible = status;
+			checkBoxCadastroMedicoMasculino.Visible = status;
+			maskedTextBoxCadastroMedicoID.Visible = status;
+			checkedListBoxCadastroMedicoEspecialidades.Visible = status;
+			labelCadastroMedicoEspecialidades.Visible = status;
+			labelCadastroMedicoDias.Visible = status;
+			checkedListBoxCadastroMedicoDias.Visible = status;
+			labelCadastroMedicoHorario.Visible = status;
+			numericUpDownCadastroMedicoHorario.Visible = status;
 		}
 		private void CadastroPacienteVisibility(bool status)
 		{
@@ -424,7 +450,6 @@ namespace SaraCura
 			CadastroVisibility(false);
 			CadastroEquipamentoVisibility(true);
 		}
-
 		private void labelCadastroEquipamentoFinalizar_Click(object sender, EventArgs e)
 		{
 			string tipo;
@@ -457,10 +482,54 @@ namespace SaraCura
 			}
 			MessageBox.Show("Equipamento cadastrado com sucesso!");
 		}
-
 		private void labelCadastroMedico_Click(object sender, EventArgs e)
 		{
+			CadastroVisibility(false);
+			CadastroMedicoVisibility(true);
+		}
+		private void checkBoxCadastroMedicoMasculino_CheckedChanged(object sender, EventArgs e)
+		{
+			if(checkBoxCadastroMedicoMasculino.Checked)
+			{
+				checkBoxCadastroMedicoFeminino.Checked = false;
+			}
+		}
+		private void checkBoxCadastroMedicoFeminino_CheckedChanged(object sender, EventArgs e)
+		{
+			if(checkBoxCadastroMedicoFeminino.Checked)
+			{
+				checkBoxCadastroMedicoMasculino.Checked = false;
+			}
+		}
 
+		private void labelCaastroMedicoFinalizar_Click(object sender, EventArgs e)
+		{
+			string nome, sexo;
+			ushort crm, horario_inicio;
+			nome = textBoxCadastroMedicoNome.Text;
+			if(nome.All(char.IsLetter) || nome is "")
+			{
+				MessageBox.Show("Nome inválido!");
+				textBoxCadastroMedicoNome.Text = "";
+				return;
+			}
+			if (checkBoxCadastroMedicoFeminino.Checked)
+				sexo = "Feminino";
+			else if(checkBoxCadastroMedicoMasculino.Checked)
+				sexo = "Masculino";
+			else
+			{
+				MessageBox.Show("Sexo não selecionado!");
+				return;
+			}
+			try
+			{
+				crm = ushort.Parse(maskedTextBoxCadastroMedicoID.Text);
+			}
+			catch
+			{
+				MessageBox.Show("CRM inválido!");
+			}
 		}
 	}
 }
